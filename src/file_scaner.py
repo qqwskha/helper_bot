@@ -52,6 +52,7 @@ def save_to_json(data, output_file):
 
 
 def update_works_config():
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     BASE_PATH = "../files"  # Путь к корневой папке с файлами
     OUTPUT_FILE = "works_config.json"  # Путь к выходному JSON-файлу
 
@@ -129,6 +130,7 @@ def update_works_config():
 
 
 if __name__ == "__main__":
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     BASE_PATH = "../files"  # Путь к корневой папке с файлами
     OUTPUT_FILE = "works_config.json"  # Путь к выходному JSON-файлу
     # Генерация JSON
