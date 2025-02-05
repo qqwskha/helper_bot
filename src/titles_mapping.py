@@ -1,6 +1,5 @@
 # src/titles_mapping.py
-from .config import PRACTICAL_WORKS
-
+from src.config import PRACTICAL_WORKS
 
 def generate_titles_mapping():
     titles_mapping = {}
@@ -15,9 +14,7 @@ def generate_titles_mapping():
                 titles_mapping[variant] = variant.replace("_", " ").title()
     return titles_mapping
 
-
 TITLES_MAPPING = generate_titles_mapping()
-
 TITLES_MAPPING.update({
     "ITPD": "Информационные технологии в профессиональной деятельности",
     "na4ert": "Начертательная геометрия",
@@ -31,5 +28,4 @@ TITLES_MAPPING.update({
     "kart_chisl_nesoot_ed": "Карты числа несоответствий единицам продукции",
     "kart_doli_nesoot": "Карты доли несоотвествий",
 })
-
 REVERSED_TITLES_MAPPING = {value: key for key, value in TITLES_MAPPING.items()}

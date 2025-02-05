@@ -2,6 +2,8 @@
 import json
 import os
 
+from src.config import PRACTICAL_WORKS
+
 def generate_json(base_path):
     """
     Сканирует папки и генерирует JSON-структуру данных.

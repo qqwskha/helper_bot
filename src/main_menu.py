@@ -1,9 +1,9 @@
 import logging
 from aiogram import types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from .config import PRACTICAL_WORKS
-from .titles_mapping import TITLES_MAPPING
-from .user_state import UserState
+from src.config import PRACTICAL_WORKS
+from src.titles_mapping import TITLES_MAPPING
+from src.user_state import UserState
 
 # Логирование
 logging.basicConfig(level=logging.INFO)

@@ -6,11 +6,11 @@ from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils import executor
 from aiogram.utils.exceptions import BotBlocked
-from .config import (FEEDBACK_CHANNEL_ID, PRACTICAL_WORKS, ADMIN_ID)
-from .main_menu import MainMenu
-from .order_manager import OrderManager
+from src.config import (FEEDBACK_CHANNEL_ID, PRACTICAL_WORKS, ADMIN_ID)
+from src.main_menu import MainMenu
+from src.order_manager import OrderManager
 from .titles_mapping import TITLES_MAPPING, REVERSED_TITLES_MAPPING
-from .user_state import UserState
+from src.user_state import UserState
 
 # Логирование
 logging.basicConfig(level=logging.INFO)
