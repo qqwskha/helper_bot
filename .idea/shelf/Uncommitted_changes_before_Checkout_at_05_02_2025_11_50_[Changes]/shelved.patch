@@ -1,0 +1,371 @@
+Index: src/bot.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># src/bot.py\r\nimport logging\r\n\r\nfrom aiogram import Bot, Dispatcher, types\r\nfrom aiogram.contrib.middlewares.logging import LoggingMiddleware\r\nfrom aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton\r\nfrom aiogram.utils import executor\r\nfrom aiogram.utils.exceptions import BotBlocked\r\n\r\nfrom .config import (FEEDBACK_CHANNEL_ID, PRACTICAL_WORKS, ADMIN_ID)\r\nfrom .main_menu import MainMenu\r\nfrom .order_manager import OrderManager\r\nfrom .titles_mapping import TITLES_MAPPING, REVERSED_TITLES_MAPPING\r\nfrom .user_state import UserState\r\n\r\n# Логирование\r\nlogging.basicConfig(level=logging.INFO)\r\n\r\n\r\nclass TelegramBot:\r\n    def __init__(self, api_token, payment_token):\r\n        self.bot = Bot(token=api_token)\r\n        self.dp = Dispatcher(self.bot)\r\n        self.dp.middleware.setup(LoggingMiddleware())\r\n        self.user_states = {}  # Хранение состояний пользователей\r\n        self.feedback_messages = {}  # Хранение обратной связи\r\n        self.order_manager = OrderManager(payment_token)\r\n        self.main_menu = MainMenu(self.bot, self.dp, self.user_states)\r\n\r\n    def start(self):\r\n        self.main_menu.register_handlers()\r\n\r\n        @self.dp.message_handler(commands=['start'])\r\n        async def start(message: types.Message):\r\n            user_id = message.from_user.id\r\n            self.user_states[user_id] = UserState()\r\n            await self.main_menu.send_main_menu(user_id, message.from_user.first_name)\r\n            logging.info(f\"Handled /start command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['info'])\r\n        async def info(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /info without starting the bot\")\r\n                return\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_info(user_id)\r\n            logging.info(f\"Handled /info command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['prices'])\r\n        async def prices(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /prices without starting the bot\")\r\n                return\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_prices(user_id)\r\n            logging.info(f\"Handled /prices command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['help'])\r\n        async def help_command(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /help without starting the bot\")\r\n                return\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_help(user_id)\r\n            logging.info(f\"Handled /help command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['search_work'])\r\n        async def search_work(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /search_work without starting the bot\")\r\n                return\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_disciplines_menu(user_id)\r\n            logging.info(f\"Handled /search_work command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['feedback'])\r\n        async def feedback(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /feedback without starting the bot\")\r\n                return\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_feedback_request(user_id)\r\n            logging.info(f\"Handled /feedback command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['get_chat_id'])\r\n        async def get_chat_id(message: types.Message):\r\n            chat_id = message.chat.id\r\n            await message.answer(f\"ID текущего чата: {chat_id}\")\r\n            logging.info(f\"Sent chat ID {chat_id} to user {message.from_user.id}\")\r\n\r\n        @self.dp.message_handler(\r\n            lambda message: message.text and message.from_user.id in self.user_states and self.user_states[\r\n                message.from_user.id].state == \"awaiting_feedback\"\r\n        )\r\n        async def handle_feedback(message: types.Message):\r\n            user_id = message.from_user.id\r\n            feedback_text = message.text\r\n\r\n            # Сохраняем сообщение\r\n            self.feedback_messages[user_id] = feedback_text\r\n\r\n            await message.answer(\"Спасибо за ваше сообщение! Мы обязательно рассмотрим его.\")\r\n            logging.info(f\"Handled feedback message from user {user_id}\")\r\n\r\n            # Сбрасываем состояние\r\n            self.user_states[user_id].state = None\r\n\r\n        @self.dp.message_handler(commands=['admin_feedback'])\r\n        async def admin_feedback(message: types.Message):\r\n            user_id = message.from_user.id\r\n\r\n            # Проверяем, что команда вызвана администратором\r\n            if user_id != ADMIN_ID:\r\n                await message.answer(\"У вас нет прав для выполнения этой команды.\")\r\n                return\r\n\r\n            if not self.feedback_messages:\r\n                await message.answer(\"Нет новых сообщений.\")\r\n                return\r\n\r\n            # Формируем список сообщений с кликабельными user_id\r\n            feedback_list = \"Список сообщений:\\n\\n\"\r\n            for user_id, feedback_text in self.feedback_messages.items():\r\n                # Создаем кликабельную ссылку для user_id\r\n                feedback_list += f\"ID пользователя: `{user_id}` ([нажмите для копирования](tg://user?id={user_id}))\\n\"\r\n                feedback_list += f\"Текст: {feedback_text}\\n\\n\"\r\n\r\n            # Отправляем список администратору с Markdown форматированием\r\n            await message.answer(feedback_list, parse_mode=\"Markdown\")\r\n            logging.info(f\"Sent feedback list to admin {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['answer'])\r\n        async def answer(message: types.Message):\r\n            user_id = message.from_user.id\r\n\r\n            # Проверяем, что команда вызвана администратором\r\n            if user_id != ADMIN_ID:\r\n                await message.answer(\"У вас нет прав для выполнения этой команды.\")\r\n                return\r\n\r\n            try:\r\n                # Разбираем аргументы команды\r\n                args = message.get_args().split()\r\n                target_user_id = int(args[0])\r\n                response_text = \" \".join(args[1:])\r\n            except Exception as e:\r\n                await message.answer(\"Неверный формат команды. Используйте: /answer <user_id> <текст>\")\r\n                logging.error(f\"Error parsing /answer command: {e}\")\r\n                return\r\n\r\n            try:\r\n                # Отправляем ответ пользователю\r\n                await self.bot.send_message(target_user_id, response_text)\r\n                await message.answer(f\"Сообщение отправлено пользователю с ID {target_user_id}.\")\r\n                logging.info(f\"Sent response to user {target_user_id} from admin {user_id}\")\r\n            except BotBlocked:\r\n                await message.answer(f\"Пользователь с ID {target_user_id} заблокировал бота.\")\r\n                logging.error(f\"User {target_user_id} blocked the bot.\")\r\n            except Exception as e:\r\n                await message.answer(f\"Не удалось отправить сообщение пользователю с ID {target_user_id}.\")\r\n                logging.error(f\"Error sending message to user {target_user_id}: {e}\")\r\n\r\n        @self.dp.message_handler(\r\n            lambda message: message.chat.id == FEEDBACK_CHANNEL_ID and message.reply_to_message and message.reply_to_message.text.startswith(\r\n                \"Новое сообщение от пользователя\")\r\n        )\r\n        async def answer_feedback(message: types.Message):\r\n            try:\r\n                # Логируем текст сообщения для отладки\r\n                logging.info(f\"Reply message text: {message.reply_to_message.text}\")\r\n\r\n                # Извлекаем user_id\r\n                if \"(ID: \" not in message.reply_to_message.text:\r\n                    logging.error(\"Invalid feedback message format\")\r\n                    await message.answer(\"Не удалось извлечь ID пользователя из сообщения.\")\r\n                    return\r\n\r\n                user_id = int(message.reply_to_message.text.split(\"(ID: \")[1].split(\"):\")[0])\r\n                logging.info(f\"Extracted user_id: {user_id}\")\r\n\r\n                # Форматируем текст ответа с префиксом\r\n                admin_response = f\"Ответ от администратора:\\n{message.text}\"\r\n\r\n                # Отправляем ответ пользователю\r\n                await self.bot.send_message(user_id, admin_response)\r\n                await message.answer(f\"Сообщение отправлено пользователю с ID {user_id}.\")\r\n            except BotBlocked:\r\n                logging.error(f\"User {user_id} blocked the bot.\")\r\n                await message.answer(f\"Пользователь с ID {user_id} заблокировал бота.\")\r\n            except Exception as e:\r\n                logging.error(f\"Ошибка при отправке сообщения пользователю {user_id}: {e}\")\r\n                await message.answer(f\"Не удалось отправить сообщение пользователю с ID {user_id}.\")\r\n\r\n        @self.dp.message_handler(commands=['search'])\r\n        async def search(message: types.Message):\r\n            user_id = message.from_user.id\r\n\r\n            # Проверяем, что пользователь начал работу с ботом\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /search without starting the bot\")\r\n                return\r\n\r\n            # Удаляем предыдущее сообщение\r\n            await self.main_menu.delete_previous_message(user_id)\r\n\r\n            # Запрашиваем у пользователя поисковый запрос\r\n            await message.answer(\"Введите ключевое слово для поиска:\")\r\n            self.user_states[user_id].state = \"awaiting_search_query\"\r\n            logging.info(f\"Sent search request to user {user_id}\")\r\n\r\n        @self.dp.message_handler(\r\n            lambda message: message.text and message.from_user.id in self.user_states and self.user_states[\r\n                message.from_user.id].state == \"awaiting_search_query\"\r\n        )\r\n        async def handle_search_query(message: types.Message):\r\n            user_id = message.from_user.id\r\n            query = message.text.lower()  # Приводим запрос к нижнему регистру\r\n\r\n            # Выполняем поиск\r\n            results = []\r\n            for discipline, practical_types in PRACTICAL_WORKS.items():\r\n                # Ищем по ключу или значению в дисциплинах\r\n                if query in discipline.lower() or query in TITLES_MAPPING.get(discipline, \"\").lower():\r\n                    original_name = TITLES_MAPPING.get(discipline, discipline)  # Полное название\r\n                    key_name = REVERSED_TITLES_MAPPING.get(original_name, discipline)  # Ключ\r\n                    results.append((key_name, original_name))  # Сохраняем пару (ключ, значение)\r\n\r\n                for practical_type, variants in practical_types.items():\r\n                    # Ищем по ключу или значению в типах работ\r\n                    if query in practical_type.lower() or query in TITLES_MAPPING.get(practical_type, \"\").lower():\r\n                        original_name = TITLES_MAPPING.get(practical_type, practical_type)  # Полное название\r\n                        key_name = REVERSED_TITLES_MAPPING.get(original_name, practical_type)  # Ключ\r\n                        results.append((key_name, original_name))\r\n\r\n                    for variant, data in variants.items():\r\n                        # Ищем по ключу или значению в вариантах\r\n                        if query in variant.lower() or query in TITLES_MAPPING.get(variant, \"\").lower():\r\n                            original_name = TITLES_MAPPING.get(variant, variant)  # Полное название\r\n                            key_name = REVERSED_TITLES_MAPPING.get(original_name, variant)  # Ключ\r\n                            results.append((key_name, original_name))\r\n\r\n            # Формируем результат\r\n            if results:\r\n                keyboard = InlineKeyboardMarkup(row_width=1)\r\n                for key_name, original_name in results[:10]:  # Первые 10 результатов\r\n                    # Создаем кнопку с текстом \"ключ (значение)\"\r\n                    button_text = f\"({original_name})\"\r\n                    keyboard.add(InlineKeyboardButton(button_text, callback_data=f\"select_{key_name}\"))\r\n\r\n                await message.answer(\"Выберите из найденных:\", reply_markup=keyboard)\r\n            else:\r\n                await message.answer(\"Ничего не найдено.\")\r\n\r\n            # Сбрасываем состояние\r\n            self.user_states[user_id].state = None\r\n            logging.info(f\"Handled search query '{query}' for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"disc_\"))\r\n        async def select_discipline(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use disc_ callback without starting the bot\")\r\n                return\r\n            discipline = query.data.split(\"_\", 1)[1]\r\n            self.user_states[user_id].discipline = discipline\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_practical_types_menu(user_id, discipline)\r\n            await query.answer()\r\n            logging.info(f\"Handled disc_ callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"pr_\"))\r\n        async def select_practical_type(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use pr_ callback without starting the bot\")\r\n                return\r\n            practical_type = query.data.split(\"_\", 1)[1]\r\n            self.user_states[user_id].practical_type = practical_type\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_variants_menu(user_id, practical_type)\r\n            await query.answer()\r\n            logging.info(f\"Handled pr_ callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"var_\"))\r\n        async def select_variant(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use var_ callback without starting the bot\")\r\n                return\r\n            variant = query.data.split(\"_\", 1)[1]\r\n            self.user_states[user_id].variant = variant\r\n            # Отправляем изображение-пример\r\n            discipline = self.user_states[user_id].discipline\r\n            practical_type = self.user_states[user_id].practical_type\r\n            variant_data = PRACTICAL_WORKS[discipline][practical_type][variant]\r\n            image_path = variant_data[\"image\"]\r\n            try:\r\n                with open(image_path, \"rb\") as image:\r\n                    await self.main_menu.delete_previous_message(user_id)\r\n                    message = await query.message.answer_photo(\r\n                        image,\r\n                        caption=\"Вот пример для выбранного варианта. Подтвердите ваш выбор.\",\r\n                        reply_markup=self.main_menu.get_confirmation_keyboard(practical_type, variant),\r\n                    )\r\n                    self.user_states[user_id].message_id = message.message_id\r\n            except FileNotFoundError as e:\r\n                logging.error(f\"File not found: {e}\")\r\n                await query.message.answer(\"Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.\")\r\n            await query.answer()\r\n            logging.info(f\"Handled var_ callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"confirm_choice\")\r\n        async def confirm_choice(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use confirm_choice callback without starting the bot\")\r\n                return\r\n            await self.confirm_order(user_id)\r\n            await query.answer()\r\n            logging.info(f\"Handled confirm_choice callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"back_to_practicals_\"))\r\n        async def back_to_practicals(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use back_to_practicals callback without starting the bot\")\r\n                return\r\n            discipline = self.user_states[user_id].discipline\r\n            practical_type = query.data.split(\"_\")[-1]  # Извлекаем тип практической работы\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_practical_types_menu(user_id, discipline)\r\n            await query.answer()\r\n            logging.info(f\"Handled back_to_practicals callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"back_to_variants_\"))\r\n        async def back_to_variants(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use back_to_variants callback without starting the bot\")\r\n                return\r\n            practical_type = query.data.split(\"_\")[-1]  # Извлекаем тип практической работы\r\n            await self.main_menu.delete_previous_message(user_id)\r\n            await self.main_menu.send_variants_menu(user_id, practical_type)\r\n            await query.answer()\r\n            logging.info(f\"Handled back_to_variants callback for user {user_id}\")\r\n\r\n        @self.dp.pre_checkout_query_handler(lambda query: True)\r\n        async def pre_checkout_query(pre_checkout_q: types.PreCheckoutQuery):\r\n            await self.bot.answer_pre_checkout_query(pre_checkout_q.id, ok=True)\r\n\r\n        @self.dp.message_handler(content_types=types.ContentType.SUCCESSFUL_PAYMENT)\r\n        async def successful_payment(message: types.Message):\r\n            user_id = message.from_user.id\r\n            user_state = self.user_states[user_id]\r\n            # Получаем пути к файлам из структуры данных\r\n            discipline = user_state.discipline\r\n            practical_type = user_state.practical_type\r\n            variant = user_state.variant\r\n            files = PRACTICAL_WORKS[discipline][practical_type][variant][\"files\"]\r\n            # Отправляем все три файла\r\n            for file_path in files:\r\n                with open(file_path, \"rb\") as file:\r\n                    await message.answer_document(file)\r\n            await message.answer(\"Все файлы отправлены! Спасибо за покупку.\")\r\n            logging.info(f\"Handled successful payment for user {user_id}\")\r\n\r\n        @self.dp.message_handler()\r\n        async def unknown_command(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} sent an unknown command without starting the bot\")\r\n                return\r\n            await message.answer(\"Неизвестная команда. Пожалуйста, используйте одну из доступных команд.\")\r\n            logging.info(f\"User {user_id} sent an unknown command\")\r\n\r\n        executor.start_polling(self.dp, skip_updates=True)\r\n\r\n\r\n\r\n    async def confirm_order(self, user_id):\r\n        user_state = self.user_states[user_id]\r\n        if not user_state.is_complete():\r\n            await self.bot.send_message(user_id, \"Пожалуйста, выберите все параметры перед подтверждением заказа.\")\r\n            logging.info(f\"User {user_id} tried to confirm order without completing selection\")\r\n            return\r\n        discipline = user_state.discipline\r\n        practical_type = user_state.practical_type\r\n        variant = user_state.variant\r\n        variant_data = PRACTICAL_WORKS[discipline][practical_type][variant]\r\n        price = variant_data[\"price\"]\r\n        order_details = (\r\n            f\"Вы выбрали:\\n\"\r\n            f\"Дисциплина: {discipline}\\n\"\r\n            f\"Тип практической работы: {practical_type}\\n\"\r\n            f\"Вариант: {variant}\\n\"\r\n            f\"Стоимость: {price} рублей\\n\"\r\n            f\"Оплатить?\"\r\n        )\r\n        invoice_data = self.order_manager.create_invoice(user_id, order_details, price)\r\n        try:\r\n            await self.bot.send_invoice(**invoice_data)\r\n            logging.info(f\"Sent invoice to user {user_id}\")\r\n        except Exception as e:\r\n            logging.error(f\"Error sending invoice to user {user_id}: {e}\")\r\n            await self.bot.send_message(user_id, \"Произошла ошибка при создании счета. Пожалуйста, попробуйте позже.\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/bot.py b/src/bot.py
+--- a/src/bot.py	(revision a1a43b46df4adc155b89eb3ad53f44cea61aa313)
++++ b/src/bot.py	(date 1738738188315)
+@@ -6,7 +6,6 @@
+ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+ from aiogram.utils import executor
+ from aiogram.utils.exceptions import BotBlocked
+-
+ from .config import (FEEDBACK_CHANNEL_ID, PRACTICAL_WORKS, ADMIN_ID)
+ from .main_menu import MainMenu
+ from .order_manager import OrderManager
+@@ -241,7 +240,9 @@
+                     if query in practical_type.lower() or query in TITLES_MAPPING.get(practical_type, "").lower():
+                         original_name = TITLES_MAPPING.get(practical_type, practical_type)  # Полное название
+                         key_name = REVERSED_TITLES_MAPPING.get(original_name, practical_type)  # Ключ
+-                        results.append((key_name, original_name))
++                        # Добавляем приписку "Практическая работа - (название)"
++                        display_name = f"Практическая работа - ({original_name})"
++                        results.append((key_name, display_name))
+ 
+                     for variant, data in variants.items():
+                         # Ищем по ключу или значению в вариантах
+@@ -253,11 +254,10 @@
+             # Формируем результат
+             if results:
+                 keyboard = InlineKeyboardMarkup(row_width=1)
+-                for key_name, original_name in results[:10]:  # Первые 10 результатов
++                for key_name, display_name in results[:10]:  # Первые 10 результатов
+                     # Создаем кнопку с текстом "ключ (значение)"
+-                    button_text = f"({original_name})"
++                    button_text = f"{display_name}"
+                     keyboard.add(InlineKeyboardButton(button_text, callback_data=f"select_{key_name}"))
+-
+                 await message.answer("Выберите из найденных:", reply_markup=keyboard)
+             else:
+                 await message.answer("Ничего не найдено.")
+@@ -266,6 +266,85 @@
+             self.user_states[user_id].state = None
+             logging.info(f"Handled search query '{query}' for user {user_id}")
+ 
++        from .titles_mapping import TITLES_MAPPING, REVERSED_TITLES_MAPPING
++
++        @self.dp.callback_query_handler(lambda query: query.data.startswith("select_"))
++        async def handle_search_result(query: types.CallbackQuery):
++            user_id = query.from_user.id
++            if user_id not in self.user_states:
++                await query.message.answer("Пожалуйста, начните с команды /start.")
++                await query.answer()
++                logging.info(f"User {user_id} tried to use select_ callback without starting the bot")
++                return
++
++            # Извлекаем ключ из callback_data
++            key = query.data.split("_", 1)[1]
++
++            # Преобразуем ключ, если он находится в TITLES_MAPPING
++            practical_key = REVERSED_TITLES_MAPPING.get(key, key)
++
++            # Находим соответствующие данные в PRACTICAL_WORKS
++            found = False
++            for discipline, practical_types in PRACTICAL_WORKS.items():
++                for practical_type, variants in practical_types.items():
++                    # Проверяем, является ли ключ типом работы
++                    if practical_key == practical_type:
++                        # Сохраняем состояние пользователя
++                        self.user_states[user_id].discipline = discipline
++                        self.user_states[user_id].practical_type = practical_type
++
++                        # Переходим к выбору вариантов
++                        await self.main_menu.delete_previous_message(user_id)
++                        await self.main_menu.send_variants_menu(user_id, practical_type)
++                        await query.answer()
++                        logging.info(f"Handled search result for practical type '{practical_key}' for user {user_id}")
++                        found = True
++                        break
++
++                    # Проверяем, является ли ключ вариантом
++                    for variant, data in variants.items():
++                        if practical_key == variant:
++                            # Сохраняем состояние пользователя
++                            self.user_states[user_id].discipline = discipline
++                            self.user_states[user_id].practical_type = practical_type
++                            self.user_states[user_id].variant = variant
++
++                            # Отправляем изображение-пример
++                            image_path = data.get("image")
++                            if not image_path or not isinstance(image_path, str):
++                                logging.error(f"Image path is missing or invalid for variant '{variant}'")
++                                await query.message.answer(
++                                    "Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.")
++                                await query.answer()
++                                return
++
++                            try:
++                                with open(image_path, "rb") as image:
++                                    await self.main_menu.delete_previous_message(user_id)
++                                    message = await query.message.answer_photo(
++                                        image,
++                                        caption="Вот пример для выбранного варианта. Подтвердите ваш выбор.",
++                                        reply_markup=self.main_menu.get_confirmation_keyboard(practical_type, variant),
++                                    )
++                                    self.user_states[user_id].message_id = message.message_id
++                                    found = True
++                            except FileNotFoundError as e:
++                                logging.error(f"File not found: {e}")
++                                await query.message.answer(
++                                    "Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.")
++                                await query.answer()
++                                return
++
++            if not found:
++                await query.message.answer(
++                    "Произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте снова.")
++                await query.answer()
++                logging.error(f"Key '{key}' not found in PRACTICAL_WORKS")
++                return
++
++            await query.answer()
++            logging.info(f"Handled search result for key '{key}' for user {user_id}")
++
+         @self.dp.callback_query_handler(lambda query: query.data.startswith("disc_"))
+         async def select_discipline(query: types.CallbackQuery):
+             user_id = query.from_user.id
+Index: src/main_menu.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># src/main_menu.py\r\nimport logging\r\n\r\nfrom aiogram import types\r\nfrom aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup\r\n\r\nfrom .config import PRACTICAL_WORKS\r\nfrom .titles_mapping import TITLES_MAPPING\r\nfrom .user_state import UserState\r\n\r\n# Логирование\r\nlogging.basicConfig(level=logging.INFO)\r\n\r\nclass MainMenu:\r\n    def __init__(self, bot, dp, user_states):\r\n        self.bot = bot\r\n        self.dp = dp\r\n        self.user_states = user_states\r\n\r\n    def register_handlers(self):\r\n        @self.dp.message_handler(commands=['start'])\r\n        async def start(message: types.Message):\r\n            user_id = message.from_user.id\r\n            self.user_states[user_id] = UserState()\r\n            await self.send_main_menu(user_id, message.from_user.first_name)\r\n            logging.info(f\"Handled /start command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['info'])\r\n        async def info(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /info without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_info(user_id)\r\n            logging.info(f\"Handled /info command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['prices'])\r\n        async def prices(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /prices without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_prices(user_id)\r\n            logging.info(f\"Handled /prices command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['help'])\r\n        async def help_command(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /help without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_help(user_id)\r\n            logging.info(f\"Handled /help command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['search_work'])\r\n        async def search_work(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /search_work without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_disciplines_menu(user_id)\r\n            logging.info(f\"Handled /search_work command for user {user_id}\")\r\n\r\n        @self.dp.message_handler(commands=['feedback'])\r\n        async def feedback(message: types.Message):\r\n            user_id = message.from_user.id\r\n            if user_id not in self.user_states:\r\n                await message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                logging.info(f\"User {user_id} tried to use /feedback without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_feedback_request(user_id)\r\n            logging.info(f\"Handled /feedback command for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"main_menu\")\r\n        async def main_menu(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use main_menu callback without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_main_menu(user_id, query.from_user.first_name)\r\n            await query.answer()\r\n            logging.info(f\"Handled main_menu callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"info\")\r\n        async def info_callback(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use info callback without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_info(user_id)\r\n            await query.answer()\r\n            logging.info(f\"Handled info callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"prices\")\r\n        async def prices_callback(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use prices callback without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_prices(user_id)\r\n            await query.answer()\r\n            logging.info(f\"Handled prices callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"search_work\")\r\n        async def search_work_callback(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use search_work callback without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_disciplines_menu(user_id)\r\n            await query.answer()\r\n            logging.info(f\"Handled search_work callback for user {user_id}\")\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"feedback\")\r\n        async def feedback_callback(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            if user_id not in self.user_states:\r\n                await query.message.answer(\"Пожалуйста, начните с команды /start.\")\r\n                await query.answer()\r\n                logging.info(f\"User {user_id} tried to use feedback callback without starting the bot\")\r\n                return\r\n            await self.delete_previous_message(user_id)\r\n            await self.send_feedback_request(user_id)\r\n            await query.answer()\r\n            logging.info(f\"Handled feedback callback for user {user_id}\")\r\n\r\n    async def send_main_menu(self, user_id, first_name):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        keyboard.add(InlineKeyboardButton(\"Информация\", callback_data=\"info\"))\r\n        keyboard.add(InlineKeyboardButton(\"Цены\", callback_data=\"prices\"))\r\n        keyboard.add(InlineKeyboardButton(\"Перейти к поиску работы\", callback_data=\"search_work\"))\r\n        keyboard.add(InlineKeyboardButton(\"Обратная связь\", callback_data=\"feedback\"))\r\n        greeting_message = f\"Добро пожаловать, {first_name}!\"\r\n        message = await self.bot.send_message(user_id, greeting_message, reply_markup=keyboard)\r\n        self.user_states[user_id].message_id = message.message_id\r\n        logging.info(f\"Sent main menu to user {user_id}\")\r\n\r\n    async def send_info(self, user_id):\r\n        keyboard = self.get_back_to_main_menu_keyboard()\r\n        await self.bot.send_message(\r\n            user_id,\r\n            \"Информация о боте:\\n\\n\"\r\n            \"Этот бот помогает выбрать и оплатить практические работы.\\n\"\r\n            \"Для начала выберите дисциплину, затем практическую работу и вариант.\",\r\n            reply_markup=keyboard,\r\n        )\r\n        logging.info(f\"Sent info message to user {user_id}\")\r\n\r\n    async def send_prices(self, user_id):\r\n        keyboard = self.get_back_to_main_menu_keyboard()\r\n        prices_info = \"Цены на практические работы:\\n\\n\"\r\n        for discipline, practical_types in PRACTICAL_WORKS.items():\r\n            prices_info += f\"**{discipline}**:\\n\"\r\n            for practical_type, variants in practical_types.items():\r\n                prices_info += f\"  • {practical_type}:\\n\"\r\n                for variant, data in variants.items():\r\n                    prices_info += f\"    - {variant}: {data['price']} рублей\\n\"\r\n            prices_info += \"\\n\"\r\n        await self.bot.send_message(\r\n            user_id,\r\n            prices_info,\r\n            parse_mode=\"Markdown\",\r\n            reply_markup=keyboard,\r\n        )\r\n        logging.info(f\"Sent prices message to user {user_id}\")\r\n\r\n    async def send_help(self, user_id):\r\n        keyboard = self.get_back_to_main_menu_keyboard()\r\n        await self.bot.send_message(\r\n            user_id,\r\n            \"Список доступных команд:\\n\"\r\n            \"/start - Начать работу с ботом\\n\"\r\n            \"/info - Информация о боте\\n\"\r\n            \"/prices - Цены на практические работы\\n\"\r\n            \"/search_work - Перейти к поиску работы\\n\"\r\n            \"/feedback - Отправить сообщение для обратной связи\\n\"\r\n            \"/help - Помощь\",\r\n            reply_markup=keyboard,\r\n        )\r\n        logging.info(f\"Sent help message to user {user_id}\")\r\n\r\n    async def send_disciplines_menu(self, user_id):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        disciplines = list(PRACTICAL_WORKS.keys())\r\n        for discipline in disciplines:\r\n            full_title = TITLES_MAPPING.get(discipline, discipline)  # Получаем полное название\r\n            keyboard.insert(InlineKeyboardButton(full_title, callback_data=f\"disc_{discipline}\"))\r\n        keyboard.add(InlineKeyboardButton(\"Назад\", callback_data=\"main_menu\"))\r\n        message = await self.bot.send_message(user_id, \"Выберите дисциплину:\", reply_markup=keyboard)\r\n        self.user_states[user_id].message_id = message.message_id\r\n        logging.info(f\"Sent disciplines menu to user {user_id}\")\r\n\r\n    async def send_practical_types_menu(self, user_id, discipline):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        practical_types = list(PRACTICAL_WORKS[discipline].keys())\r\n        for practical_type in practical_types:\r\n            full_title = TITLES_MAPPING.get(practical_type, practical_type)  # Получаем полное название\r\n            keyboard.insert(InlineKeyboardButton(full_title, callback_data=f\"pr_{practical_type}\"))\r\n        keyboard.add(InlineKeyboardButton(\"Назад\", callback_data=\"main_menu\"))\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        message = await self.bot.send_message(user_id,\r\n                                              f\"Выберите тип практической работы для {TITLES_MAPPING.get(discipline, discipline)}:\",\r\n                                              reply_markup=keyboard)\r\n        self.user_states[user_id].message_id = message.message_id\r\n        logging.info(f\"Sent practical types menu for {discipline} to user {user_id}\")\r\n\r\n    async def send_variants_menu(self, user_id, practical_type):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        discipline = self.user_states[user_id].discipline\r\n        variants = list(PRACTICAL_WORKS[discipline][practical_type].keys())\r\n        for variant in variants:\r\n            full_title = TITLES_MAPPING.get(variant, variant)  # Получаем полное название\r\n            keyboard.insert(InlineKeyboardButton(full_title, callback_data=f\"var_{variant}\"))\r\n        keyboard.add(InlineKeyboardButton(\"Назад\", callback_data=f\"back_to_practicals_{practical_type}\"))\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        message = await self.bot.send_message(user_id,\r\n                                              f\"Выберите вариант для {TITLES_MAPPING.get(practical_type, practical_type)}:\",\r\n                                              reply_markup=keyboard)\r\n        self.user_states[user_id].message_id = message.message_id\r\n        logging.info(f\"Sent variants menu for {practical_type} to user {user_id}\")\r\n\r\n    async def send_feedback_request(self, user_id):\r\n        keyboard = self.get_back_to_main_menu_keyboard()\r\n        await self.bot.send_message(\r\n            user_id,\r\n            \"Введите ваше сообщение для обратной связи:\",\r\n            reply_markup=keyboard,\r\n        )\r\n        self.user_states[user_id].state = \"awaiting_feedback\"\r\n        logging.info(f\"Sent feedback request to user {user_id}\")\r\n\r\n    def get_confirmation_keyboard(self, practical_type, variant):\r\n        keyboard = InlineKeyboardMarkup()\r\n        keyboard.add(InlineKeyboardButton(\"Подтвердить\", callback_data=\"confirm_choice\"))\r\n        keyboard.add(InlineKeyboardButton(\"Назад\", callback_data=f\"back_to_variants_{practical_type}\"))\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        return keyboard\r\n\r\n    def get_back_to_main_menu_keyboard(self):\r\n        keyboard = InlineKeyboardMarkup()\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        return keyboard\r\n\r\n    async def delete_previous_message(self, user_id):\r\n        user_state = self.user_states[user_id]\r\n        if user_state.message_id is not None:\r\n            try:\r\n                await self.bot.delete_message(user_id, user_state.message_id)\r\n            except Exception as e:\r\n                logging.error(f\"Error deleting message: {e}\")\r\n        logging.info(f\"Tried to delete previous message for user {user_id}\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main_menu.py b/src/main_menu.py
+--- a/src/main_menu.py	(revision a1a43b46df4adc155b89eb3ad53f44cea61aa313)
++++ b/src/main_menu.py	(date 1738738188324)
+@@ -1,9 +1,6 @@
+-# src/main_menu.py
+ import logging
+-
+ from aiogram import types
+ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+-
+ from .config import PRACTICAL_WORKS
+ from .titles_mapping import TITLES_MAPPING
+ from .user_state import UserState
+@@ -11,6 +8,7 @@
+ # Логирование
+ logging.basicConfig(level=logging.INFO)
+ 
++
+ class MainMenu:
+     def __init__(self, bot, dp, user_states):
+         self.bot = bot
+@@ -194,6 +192,7 @@
+             "/info - Информация о боте\n"
+             "/prices - Цены на практические работы\n"
+             "/search_work - Перейти к поиску работы\n"
++            "/search - Поиск работ по словам\n"
+             "/feedback - Отправить сообщение для обратной связи\n"
+             "/help - Помощь",
+             reply_markup=keyboard,
+Index: src/file_scaner.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import json\r\nimport os\r\n\r\n\r\ndef generate_json(base_path):\r\n    \"\"\"\r\n    Сканирует папки и генерирует JSON-структуру данных.\r\n    :param base_path: Путь к корневой папке с файлами.\r\n    :return: Словарь с данными для JSON.\r\n    \"\"\"\r\n    practical_works = {}\r\n\r\n    # Проходим по всем дисциплинам\r\n    for discipline in os.listdir(base_path):\r\n        discipline_path = os.path.join(base_path, discipline)\r\n        if os.path.isdir(discipline_path):\r\n            practical_works[discipline] = {}\r\n\r\n            # Проходим по всем типам работ\r\n            for practical_type in os.listdir(discipline_path):\r\n                practical_type_path = os.path.join(discipline_path, practical_type)\r\n                if os.path.isdir(practical_type_path):\r\n                    practical_works[discipline][practical_type] = {}\r\n\r\n                    # Проходим по всем вариантам\r\n                    for variant in os.listdir(practical_type_path):\r\n                        variant_path = os.path.join(practical_type_path, variant)\r\n                        if os.path.isdir(variant_path):\r\n                            # Собираем файлы внутри варианта\r\n                            files = [os.path.join(variant_path, f) for f in os.listdir(variant_path) if os.path.isfile(os.path.join(variant_path, f))]\r\n\r\n                            # Предполагаем, что preview.jpg существует\r\n                            image_path = os.path.join(variant_path, \"preview.jpg\")\r\n                            if not os.path.exists(image_path):\r\n                                image_path = None  # Если preview.jpg отсутствует\r\n\r\n                            # Определяем цену (можно хранить в отдельном файле или использовать фиксированное значение)\r\n                            price = 500  # Пример фиксированной цены\r\n\r\n                            practical_works[discipline][practical_type][variant] = {\r\n                                \"image\": image_path,\r\n                                \"files\": files,\r\n                                \"price\": price,\r\n                            }\r\n\r\n    return practical_works\r\n\r\n\r\ndef save_to_json(data, output_file):\r\n    \"\"\"\r\n    Сохраняет данные в JSON-файл.\r\n    :param data: Словарь с данными.\r\n    :param output_file: Путь к выходному JSON-файлу.\r\n    \"\"\"\r\n    with open(output_file, \"w\", encoding=\"utf-8\") as file:\r\n        json.dump(data, file, ensure_ascii=False, indent=4)\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    BASE_PATH = \"../files\"  # Путь к корневой папке с файлами\r\n    OUTPUT_FILE = \"works_config.json\"  # Путь к выходному JSON-файлу\r\n\r\n    # Генерация JSON\r\n    data = generate_json(BASE_PATH)\r\n\r\n    # Сохранение JSON\r\n    save_to_json(data, OUTPUT_FILE)\r\n\r\n    print(f\"JSON-файл успешно создан: {OUTPUT_FILE}\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/file_scaner.py b/src/file_scaner.py
+--- a/src/file_scaner.py	(revision a1a43b46df4adc155b89eb3ad53f44cea61aa313)
++++ b/src/file_scaner.py	(date 1738738188333)
+@@ -1,7 +1,7 @@
++# src/file_scaner.py
+ import json
+ import os
+ 
+-
+ def generate_json(base_path):
+     """
+     Сканирует папки и генерирует JSON-структуру данных.
+@@ -9,43 +9,35 @@
+     :return: Словарь с данными для JSON.
+     """
+     practical_works = {}
+-
+     # Проходим по всем дисциплинам
+     for discipline in os.listdir(base_path):
+         discipline_path = os.path.join(base_path, discipline)
+         if os.path.isdir(discipline_path):
+             practical_works[discipline] = {}
+-
+             # Проходим по всем типам работ
+             for practical_type in os.listdir(discipline_path):
+                 practical_type_path = os.path.join(discipline_path, practical_type)
+                 if os.path.isdir(practical_type_path):
+                     practical_works[discipline][practical_type] = {}
+-
+                     # Проходим по всем вариантам
+                     for variant in os.listdir(practical_type_path):
+                         variant_path = os.path.join(practical_type_path, variant)
+                         if os.path.isdir(variant_path):
+                             # Собираем файлы внутри варианта
+                             files = [os.path.join(variant_path, f) for f in os.listdir(variant_path) if os.path.isfile(os.path.join(variant_path, f))]
+-
+                             # Предполагаем, что preview.jpg существует
+                             image_path = os.path.join(variant_path, "preview.jpg")
+                             if not os.path.exists(image_path):
+                                 image_path = None  # Если preview.jpg отсутствует
+-
+                             # Определяем цену (можно хранить в отдельном файле или использовать фиксированное значение)
+                             price = 500  # Пример фиксированной цены
+-
+                             practical_works[discipline][practical_type][variant] = {
+                                 "image": image_path,
+                                 "files": files,
+                                 "price": price,
+                             }
+-
+     return practical_works
+ 
+-
+ def save_to_json(data, output_file):
+     """
+     Сохраняет данные в JSON-файл.
+@@ -55,15 +47,11 @@
+     with open(output_file, "w", encoding="utf-8") as file:
+         json.dump(data, file, ensure_ascii=False, indent=4)
+ 
+-
+ if __name__ == "__main__":
+     BASE_PATH = "../files"  # Путь к корневой папке с файлами
+     OUTPUT_FILE = "works_config.json"  # Путь к выходному JSON-файлу
+-
+     # Генерация JSON
+     data = generate_json(BASE_PATH)
+-
+     # Сохранение JSON
+     save_to_json(data, OUTPUT_FILE)
+-
+     print(f"JSON-файл успешно создан: {OUTPUT_FILE}")
+\ No newline at end of file
+Index: src/main.py
+===================================================================
+diff --git a/src/main.py b/src/main.py
+deleted file mode 100644
+--- a/src/main.py	(revision a1a43b46df4adc155b89eb3ad53f44cea61aa313)
++++ /dev/null	(revision a1a43b46df4adc155b89eb3ad53f44cea61aa313)
+@@ -1,6 +0,0 @@
+-from src.bot import TelegramBot
+-from src.config import API_TOKEN, PAYMENT_PROVIDER_TOKEN
+-
+-if __name__ == '__main__':
+-    bot = TelegramBot(API_TOKEN, PAYMENT_PROVIDER_TOKEN)
+-    bot.start()
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+new file mode 100644
+--- /dev/null	(date 1738738188354)
++++ b/main.py	(date 1738738188354)
+@@ -0,0 +1,42 @@
++# src/main.py
++from src.bot import TelegramBot
++from src.config import API_TOKEN, PAYMENT_PROVIDER_TOKEN
++from src.file_scaner import generate_json, save_to_json
++import os
++import json
++
++def update_works_config():
++    BASE_PATH = "../files"  # Путь к корневой папке с файлами
++    OUTPUT_FILE = "works_config.json"  # Путь к выходному JSON-файлу
++
++    # Проверяем, существует ли выходной файл
++    if os.path.exists(OUTPUT_FILE):
++        with open(OUTPUT_FILE, "r", encoding="utf-8") as file:
++            existing_data = json.load(file)
++    else:
++        existing_data = {}
++
++    # Генерируем новые данные
++    new_data = generate_json(BASE_PATH)
++
++    # Обновляем существующие данные новыми данными
++    for discipline, practical_types in new_data.items():
++        if discipline not in existing_data:
++            existing_data[discipline] = {}
++        for practical_type, variants in practical_types.items():
++            if practical_type not in existing_data[discipline]:
++                existing_data[discipline][practical_type] = {}
++            for variant, data in variants.items():
++                existing_data[discipline][practical_type][variant] = data
++
++    # Сохраняем обновленные данные в JSON-файл
++    save_to_json(existing_data, OUTPUT_FILE)
++    print(f"JSON-файл успешно обновлен: {OUTPUT_FILE}")
++
++if __name__ == "__main__":
++    # Обновляем JSON-файл перед запуском бота
++    update_works_config()
++
++    # Запускаем бота
++    bot = TelegramBot(API_TOKEN, PAYMENT_PROVIDER_TOKEN)
++    bot.start()
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"db7b6a3f-025e-44d2-894a-129f3978f6c0\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/bot.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/bot.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/config.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/config.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/titles_mapping.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/titles_mapping.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"develop\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2sLMEj7hzMKlDzh4BkbMwUEWDc6\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;Python.bot.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.file_scaner.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"Python.main\">\r\n    <configuration name=\"file_scaner\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"pythonProject\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/src\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/src/file_scaner.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"pythonProject\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/src\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/src/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.main\" />\r\n        <item itemvalue=\"Python.file_scaner\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"db7b6a3f-025e-44d2-894a-129f3978f6c0\" name=\"Changes\" comment=\"\" />\r\n      <created>1738230291890</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1738230291890</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a1a43b46df4adc155b89eb3ad53f44cea61aa313)
++++ b/.idea/workspace.xml	(date 1738738188362)
+@@ -6,9 +6,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="db7b6a3f-025e-44d2-894a-129f3978f6c0" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/titles_mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/titles_mapping.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -41,16 +38,21 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;Python.bot.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.file_scaner.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
++    "Python.bot.executor": "Run",
++    "Python.file_scaner.executor": "Run",
++    "Python.main.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "1ff00096"
+   }
+-}</component>
++}]]></component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\Данил\Desktop\1botTG\pythonProject" />
++    </key>
++  </component>
+   <component name="RunManager" selected="Python.main">
+     <configuration name="file_scaner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+       <module name="pythonProject" />
+@@ -87,7 +89,7 @@
+       <option name="IS_MODULE_SDK" value="true" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+       <option name="ADD_SOURCE_ROOTS" value="true" />
+-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
++      <option name="SCRIPT_NAME" value="C:\Users\Данил\Desktop\1botTG\pythonProject\main.py" />
+       <option name="PARAMETERS" value="" />
+       <option name="SHOW_COMMAND_LINE" value="false" />
+       <option name="EMULATE_TERMINAL" value="false" />

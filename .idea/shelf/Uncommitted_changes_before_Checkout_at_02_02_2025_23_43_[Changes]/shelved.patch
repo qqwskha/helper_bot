@@ -1,0 +1,310 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"db7b6a3f-025e-44d2-894a-129f3978f6c0\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/analiz_chustv/analiz_chustv.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/analiz_chustv/pre.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_otnos/kart_otnos.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_otnos/kart_otnos.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/opis_stat/chisl_har_vib/chisl_har_vib.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/opis_stat/chisl_har_vib/chisl_har_vib.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/opis_stat/diag_Paret/diag_Paret.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/opis_stat/diag_Paret/diag_Paret.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_disp/o_rav_disp.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_disp/o_rav_disp.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr/o_rav_sr.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr/o_rav_sr.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_vide_rasr/o_vide_rasr.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_vide_rasr/o_vide_rasr.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/regress_analiz/lin_regress/lin_regress.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/regress_analiz/lin_regress/lin_regress.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/regress_analiz/mnozh_regress/mnozh_regress.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/regress_analiz/mnozh_regress/mnozh_regress.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/regress_analiz/nelin_regress/nelin_regress.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/regress_analiz/nelin_regress/nelin_regress.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/binom_raspr/binom_raspr.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/binom_raspr/binom_raspr.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/exp_raspr/exp_raspr.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/exp_raspr/exp_raspr.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/norm_raspr/norm_raspr.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/norm_raspr/norm_raspr.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/puasson_raspr/puasson_raspr.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/files/ITPD/veroyat_raspr/puasson_raspr/puasson_raspr.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/file_scaner.py\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/works_config.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/1option.cdw\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/1option.dwg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/1option.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/1option.cdw\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/1option.dwg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/1option.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/option1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/2option.cdw\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/2option.dwg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/2option.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/option2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/option1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/option1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/variant1.cdw\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/variant1.dwg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/variant1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/config.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/config.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2sLMEj7hzMKlDzh4BkbMwUEWDc6\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Python.bot.executor\": \"Run\",\r\n    \"Python.file_scaner.executor\": \"Run\",\r\n    \"Python.main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"cd92405c\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Python.main\">\r\n    <configuration name=\"file_scaner\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"pythonProject\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/src\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/src/file_scaner.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"pythonProject\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/src\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/src/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.main\" />\r\n        <item itemvalue=\"Python.file_scaner\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"db7b6a3f-025e-44d2-894a-129f3978f6c0\" name=\"Changes\" comment=\"\" />\r\n      <created>1738230291890</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1738230291890</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,68 +5,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="db7b6a3f-025e-44d2-894a-129f3978f6c0" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/analiz_chustv/analiz_chustv.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/analiz_chustv/pre.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_otnos/kart_otnos.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_otnos/kart_otnos.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/opis_stat/chisl_har_vib/chisl_har_vib.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/opis_stat/chisl_har_vib/chisl_har_vib.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_Paret/diag_Paret.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_Paret/diag_Paret.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_disp/o_rav_disp.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_disp/o_rav_disp.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr/o_rav_sr.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr/o_rav_sr.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_vide_rasr/o_vide_rasr.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_vide_rasr/o_vide_rasr.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/regress_analiz/lin_regress/lin_regress.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/regress_analiz/lin_regress/lin_regress.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/regress_analiz/mnozh_regress/mnozh_regress.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/regress_analiz/mnozh_regress/mnozh_regress.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/regress_analiz/nelin_regress/nelin_regress.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/regress_analiz/nelin_regress/nelin_regress.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/binom_raspr/binom_raspr.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/binom_raspr/binom_raspr.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/exp_raspr/exp_raspr.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/exp_raspr/exp_raspr.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/norm_raspr/norm_raspr.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/norm_raspr/norm_raspr.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/puasson_raspr/puasson_raspr.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/puasson_raspr/puasson_raspr.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/file_scaner.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/works_config.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/1option.cdw" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/1option.dwg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/1option.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/1option.cdw" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/1option.dwg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/1option.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/1v/option1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/2option.cdw" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/2option.dwg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/2option.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/2v/option2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/option1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/option1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/variant1.cdw" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/variant1.dwg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/files/начертательная_геометрия — копия/виды/variant1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/works_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/works_config.json" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -101,10 +40,10 @@
+     "Python.file_scaner.executor": "Run",
+     "Python.main.executor": "Run",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "cd92405c"
++    "git-widget-placeholder": "main"
+   }
+ }]]></component>
+-  <component name="RunManager" selected="Python.main">
++  <component name="RunManager" selected="Python.file_scaner">
+     <configuration name="file_scaner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+       <module name="pythonProject" />
+       <option name="ENV_FILES" value="" />
+@@ -151,8 +90,8 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Python.main" />
+         <item itemvalue="Python.file_scaner" />
++        <item itemvalue="Python.main" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: src/works_config.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"ITPD\": {\r\n        \"kontrol_kart_Suhart\": {\r\n            \"analiz_chustv\": {\r\n                \"image\": \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\analiz_chustv\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\analiz_chustv\\\\analiz_chustv.xlsx\",\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\analiz_chustv\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"kart_chisl_nesoot\": {\r\n                \"image\": null,\r\n                \"files\": [],\r\n                \"price\": 500\r\n            },\r\n            \"kart_chisl_nesoot_ed\": {\r\n                \"image\": \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_chisl_nesoot_ed\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_chisl_nesoot_ed\\\\kart_chisl_nesoot_ed.xlsx\",\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_chisl_nesoot_ed\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"kart_doli_nesoot\": {\r\n                \"image\": \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_doli_nesoot\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_doli_nesoot\\\\kart_doli_nesoot.xlsx\",\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_doli_nesoot\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"kart_ind_nabl\": {\r\n                \"image\": \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_ind_nabl\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_ind_nabl\\\\kart_ind_nabl.xlsx\",\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_ind_nabl\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"kart_otnos\": {\r\n                \"image\": \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_otnos\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_otnos\\\\kart_otnos.xlsx\",\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_otnos\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"kart_sr_i_st_otkl\": {\r\n                \"image\": \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_sr_i_st_otkl\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_sr_i_st_otkl\\\\kart_sr_i_st_otkl.xlsx\",\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\kart_sr_i_st_otkl\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"sr_i_razm\": {\r\n                \"image\": \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\sr_i_razm\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\sr_i_razm\\\\preview.jpg\",\r\n                    \"../files\\\\ITPD\\\\kontrol_kart_Suhart\\\\sr_i_razm\\\\sr_i_razm.xlsx\"\r\n                ],\r\n                \"price\": 500\r\n            }\r\n        },\r\n        \"opis_stat\": {\r\n            \"chisl_har_vib\": {\r\n                \"image\": \"../files\\\\ITPD\\\\opis_stat\\\\chisl_har_vib\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\opis_stat\\\\chisl_har_vib\\\\chisl_har_vib.xlsx\",\r\n                    \"../files\\\\ITPD\\\\opis_stat\\\\chisl_har_vib\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"diag_Paret\": {\r\n                \"image\": \"../files\\\\ITPD\\\\opis_stat\\\\diag_Paret\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\opis_stat\\\\diag_Paret\\\\diag_Paret.xlsx\",\r\n                    \"../files\\\\ITPD\\\\opis_stat\\\\diag_Paret\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"diag_rass_i_koef_korrel\": {\r\n                \"image\": \"../files\\\\ITPD\\\\opis_stat\\\\diag_rass_i_koef_korrel\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\opis_stat\\\\diag_rass_i_koef_korrel\\\\diag_rass_i_koef_korrel.xlsx\",\r\n                    \"../files\\\\ITPD\\\\opis_stat\\\\diag_rass_i_koef_korrel\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            }\r\n        },\r\n        \"prov_stat_gip\": {\r\n            \"o_rav_disp\": {\r\n                \"image\": \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_disp\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_disp\\\\o_rav_disp.xlsx\",\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_disp\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"o_rav_sr\": {\r\n                \"image\": \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_sr\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_sr\\\\o_rav_sr.xlsx\",\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_sr\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"o_rav_sr_snach\": {\r\n                \"image\": \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_sr_snach\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_sr_snach\\\\o_rav_sr_snach.xlsx\",\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_rav_sr_snach\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"o_vide_rasr\": {\r\n                \"image\": \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_vide_rasr\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_vide_rasr\\\\o_vide_rasr.xlsx\",\r\n                    \"../files\\\\ITPD\\\\prov_stat_gip\\\\o_vide_rasr\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            }\r\n        },\r\n        \"regress_analiz\": {\r\n            \"lin_regress\": {\r\n                \"image\": \"../files\\\\ITPD\\\\regress_analiz\\\\lin_regress\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\regress_analiz\\\\lin_regress\\\\lin_regress.xlsx\",\r\n                    \"../files\\\\ITPD\\\\regress_analiz\\\\lin_regress\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"mnozh_regress\": {\r\n                \"image\": \"../files\\\\ITPD\\\\regress_analiz\\\\mnozh_regress\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\regress_analiz\\\\mnozh_regress\\\\mnozh_regress.xlsx\",\r\n                    \"../files\\\\ITPD\\\\regress_analiz\\\\mnozh_regress\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"nelin_regress\": {\r\n                \"image\": \"../files\\\\ITPD\\\\regress_analiz\\\\nelin_regress\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\regress_analiz\\\\nelin_regress\\\\nelin_regress.xlsx\",\r\n                    \"../files\\\\ITPD\\\\regress_analiz\\\\nelin_regress\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            }\r\n        },\r\n        \"veroyat_raspr\": {\r\n            \"binom_raspr\": {\r\n                \"image\": \"../files\\\\ITPD\\\\veroyat_raspr\\\\binom_raspr\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\binom_raspr\\\\binom_raspr.xlsx\",\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\binom_raspr\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"exp_raspr\": {\r\n                \"image\": \"../files\\\\ITPD\\\\veroyat_raspr\\\\exp_raspr\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\exp_raspr\\\\exp_raspr.xlsx\",\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\exp_raspr\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"norm_raspr\": {\r\n                \"image\": \"../files\\\\ITPD\\\\veroyat_raspr\\\\norm_raspr\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\norm_raspr\\\\norm_raspr.xlsx\",\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\norm_raspr\\\\preview.jpg\"\r\n                ],\r\n                \"price\": 500\r\n            },\r\n            \"puasson_raspr\": {\r\n                \"image\": \"../files\\\\ITPD\\\\veroyat_raspr\\\\puasson_raspr\\\\preview.jpg\",\r\n                \"files\": [\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\puasson_raspr\\\\preview.jpg\",\r\n                    \"../files\\\\ITPD\\\\veroyat_raspr\\\\puasson_raspr\\\\puasson_raspr.xlsx\"\r\n                ],\r\n                \"price\": 500\r\n            }\r\n        }\r\n    },\r\n    \"na4ert\": {\r\n        \"1v\": {},\r\n        \"2v\": {}\r\n    }\r\n}
+===================================================================
+diff --git a/src/works_config.json b/src/works_config.json
+--- a/src/works_config.json	
++++ b/src/works_config.json	
+@@ -4,6 +4,7 @@
+             "analiz_chustv": {
+                 "image": "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\analiz_chustv.jpg",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\analiz_chustv.xlsx",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\preview.jpg"
+                 ],
+@@ -17,6 +18,7 @@
+             "kart_chisl_nesoot_ed": {
+                 "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\kart_chisl_nesoot_ed.jpg",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\kart_chisl_nesoot_ed.xlsx",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\preview.jpg"
+                 ],
+@@ -25,6 +27,7 @@
+             "kart_doli_nesoot": {
+                 "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\kart_doli_nesoot.jpg",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\kart_doli_nesoot.xlsx",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\preview.jpg"
+                 ],
+@@ -33,6 +36,7 @@
+             "kart_ind_nabl": {
+                 "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\kart_ind_nabl.jpg",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\kart_ind_nabl.xlsx",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\preview.jpg"
+                 ],
+@@ -41,6 +45,7 @@
+             "kart_otnos": {
+                 "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\kart_otnos.jpg",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\kart_otnos.xlsx",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\preview.jpg"
+                 ],
+@@ -49,6 +54,7 @@
+             "kart_sr_i_st_otkl": {
+                 "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\kart_sr_i_st_otkl.jpg",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\kart_sr_i_st_otkl.xlsx",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\preview.jpg"
+                 ],
+@@ -58,6 +64,7 @@
+                 "image": "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\preview.jpg",
+                 "files": [
+                     "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\preview.jpg",
++                    "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\sr_i_razm.jpg",
+                     "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\sr_i_razm.xlsx"
+                 ],
+                 "price": 500
+@@ -67,6 +74,7 @@
+             "chisl_har_vib": {
+                 "image": "../files\\ITPD\\opis_stat\\chisl_har_vib\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\opis_stat\\chisl_har_vib\\chisl_har_vib.jpg",
+                     "../files\\ITPD\\opis_stat\\chisl_har_vib\\chisl_har_vib.xlsx",
+                     "../files\\ITPD\\opis_stat\\chisl_har_vib\\preview.jpg"
+                 ],
+@@ -75,6 +83,7 @@
+             "diag_Paret": {
+                 "image": "../files\\ITPD\\opis_stat\\diag_Paret\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\opis_stat\\diag_Paret\\diag_Paret.jpg",
+                     "../files\\ITPD\\opis_stat\\diag_Paret\\diag_Paret.xlsx",
+                     "../files\\ITPD\\opis_stat\\diag_Paret\\preview.jpg"
+                 ],
+@@ -83,6 +92,7 @@
+             "diag_rass_i_koef_korrel": {
+                 "image": "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\diag_rass_i_koef_korrel.jpg",
+                     "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\diag_rass_i_koef_korrel.xlsx",
+                     "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\preview.jpg"
+                 ],
+@@ -93,6 +103,7 @@
+             "o_rav_disp": {
+                 "image": "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\o_rav_disp.jpg",
+                     "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\o_rav_disp.xlsx",
+                     "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\preview.jpg"
+                 ],
+@@ -101,6 +112,7 @@
+             "o_rav_sr": {
+                 "image": "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\o_rav_sr.jpg",
+                     "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\o_rav_sr.xlsx",
+                     "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\preview.jpg"
+                 ],
+@@ -109,6 +121,7 @@
+             "o_rav_sr_snach": {
+                 "image": "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\o_rav_sr_snach.jpg",
+                     "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\o_rav_sr_snach.xlsx",
+                     "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\preview.jpg"
+                 ],
+@@ -117,6 +130,7 @@
+             "o_vide_rasr": {
+                 "image": "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\o_vide_rasr.jpg",
+                     "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\o_vide_rasr.xlsx",
+                     "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\preview.jpg"
+                 ],
+@@ -127,6 +141,7 @@
+             "lin_regress": {
+                 "image": "../files\\ITPD\\regress_analiz\\lin_regress\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\regress_analiz\\lin_regress\\lin_regress.jpg",
+                     "../files\\ITPD\\regress_analiz\\lin_regress\\lin_regress.xlsx",
+                     "../files\\ITPD\\regress_analiz\\lin_regress\\preview.jpg"
+                 ],
+@@ -135,6 +150,7 @@
+             "mnozh_regress": {
+                 "image": "../files\\ITPD\\regress_analiz\\mnozh_regress\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\regress_analiz\\mnozh_regress\\mnozh_regress.jpg",
+                     "../files\\ITPD\\regress_analiz\\mnozh_regress\\mnozh_regress.xlsx",
+                     "../files\\ITPD\\regress_analiz\\mnozh_regress\\preview.jpg"
+                 ],
+@@ -143,6 +159,7 @@
+             "nelin_regress": {
+                 "image": "../files\\ITPD\\regress_analiz\\nelin_regress\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\regress_analiz\\nelin_regress\\nelin_regress.jpg",
+                     "../files\\ITPD\\regress_analiz\\nelin_regress\\nelin_regress.xlsx",
+                     "../files\\ITPD\\regress_analiz\\nelin_regress\\preview.jpg"
+                 ],
+@@ -153,6 +170,7 @@
+             "binom_raspr": {
+                 "image": "../files\\ITPD\\veroyat_raspr\\binom_raspr\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\veroyat_raspr\\binom_raspr\\binom_raspr.jpg",
+                     "../files\\ITPD\\veroyat_raspr\\binom_raspr\\binom_raspr.xlsx",
+                     "../files\\ITPD\\veroyat_raspr\\binom_raspr\\preview.jpg"
+                 ],
+@@ -161,6 +179,7 @@
+             "exp_raspr": {
+                 "image": "../files\\ITPD\\veroyat_raspr\\exp_raspr\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\veroyat_raspr\\exp_raspr\\exp_raspr.jpg",
+                     "../files\\ITPD\\veroyat_raspr\\exp_raspr\\exp_raspr.xlsx",
+                     "../files\\ITPD\\veroyat_raspr\\exp_raspr\\preview.jpg"
+                 ],
+@@ -169,6 +188,7 @@
+             "norm_raspr": {
+                 "image": "../files\\ITPD\\veroyat_raspr\\norm_raspr\\preview.jpg",
+                 "files": [
++                    "../files\\ITPD\\veroyat_raspr\\norm_raspr\\norm_raspr.jpg",
+                     "../files\\ITPD\\veroyat_raspr\\norm_raspr\\norm_raspr.xlsx",
+                     "../files\\ITPD\\veroyat_raspr\\norm_raspr\\preview.jpg"
+                 ],
+@@ -178,6 +198,7 @@
+                 "image": "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\preview.jpg",
+                 "files": [
+                     "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\preview.jpg",
++                    "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\puasson_raspr.jpg",
+                     "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\puasson_raspr.xlsx"
+                 ],
+                 "price": 500
+@@ -185,7 +206,27 @@
+         }
+     },
+     "na4ert": {
+-        "1v": {},
+-        "2v": {}
++        "ВИДЫ": {
++            "1v": {
++                "image": "../files\\na4ert\\ВИДЫ\\1v\\preview.jpg",
++                "files": [
++                    "../files\\na4ert\\ВИДЫ\\1v\\1option.cdw",
++                    "../files\\na4ert\\ВИДЫ\\1v\\1option.dwg",
++                    "../files\\na4ert\\ВИДЫ\\1v\\1option.jpg",
++                    "../files\\na4ert\\ВИДЫ\\1v\\preview.jpg"
++                ],
++                "price": 500
++            },
++            "2v": {
++                "image": "../files\\na4ert\\ВИДЫ\\2v\\preview.jpg",
++                "files": [
++                    "../files\\na4ert\\ВИДЫ\\2v\\2option.cdw",
++                    "../files\\na4ert\\ВИДЫ\\2v\\2option.dwg",
++                    "../files\\na4ert\\ВИДЫ\\2v\\2option.jpg",
++                    "../files\\na4ert\\ВИДЫ\\2v\\preview.jpg"
++                ],
++                "price": 500
++            }
++        }
+     }
+ }
+\ No newline at end of file

@@ -1,0 +1,227 @@
+{
+    "ITPD": {
+        "kontrol_kart_Suhart": {
+            "analiz_chustv": {
+                "image": "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\analiz_chustv.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\analiz_chustv.xlsx",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\analiz_chustv\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "kart_chisl_nesoot_ed": {
+                "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\kart_chisl_nesoot_ed.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\kart_chisl_nesoot_ed.xlsx",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_chisl_nesoot_ed\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "kart_doli_nesoot": {
+                "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\kart_doli_nesoot.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\kart_doli_nesoot.xlsx",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_doli_nesoot\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "kart_ind_nabl": {
+                "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\kart_ind_nabl.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\kart_ind_nabl.xlsx",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_ind_nabl\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "kart_otnos": {
+                "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\kart_otnos.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\kart_otnos.xlsx",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_otnos\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "kart_sr_i_st_otkl": {
+                "image": "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\kart_sr_i_st_otkl.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\kart_sr_i_st_otkl.xlsx",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\kart_sr_i_st_otkl\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "sr_i_razm": {
+                "image": "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\preview.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\sr_i_razm.jpg",
+                    "../files\\ITPD\\kontrol_kart_Suhart\\sr_i_razm\\sr_i_razm.xlsx"
+                ],
+                "price": 500
+            }
+        },
+        "opis_stat": {
+            "chisl_har_vib": {
+                "image": "../files\\ITPD\\opis_stat\\chisl_har_vib\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\opis_stat\\chisl_har_vib\\chisl_har_vib.jpg",
+                    "../files\\ITPD\\opis_stat\\chisl_har_vib\\chisl_har_vib.xlsx",
+                    "../files\\ITPD\\opis_stat\\chisl_har_vib\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "diag_Paret": {
+                "image": "../files\\ITPD\\opis_stat\\diag_Paret\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\opis_stat\\diag_Paret\\diag_Paret.jpg",
+                    "../files\\ITPD\\opis_stat\\diag_Paret\\diag_Paret.xlsx",
+                    "../files\\ITPD\\opis_stat\\diag_Paret\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "diag_rass_i_koef_korrel": {
+                "image": "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\diag_rass_i_koef_korrel.jpg",
+                    "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\diag_rass_i_koef_korrel.xlsx",
+                    "../files\\ITPD\\opis_stat\\diag_rass_i_koef_korrel\\preview.jpg"
+                ],
+                "price": 500
+            }
+        },
+        "prov_stat_gip": {
+            "o_rav_disp": {
+                "image": "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\o_rav_disp.jpg",
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\o_rav_disp.xlsx",
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_disp\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "o_rav_sr": {
+                "image": "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\o_rav_sr.jpg",
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\o_rav_sr.xlsx",
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "o_rav_sr_snach": {
+                "image": "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\o_rav_sr_snach.jpg",
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\o_rav_sr_snach.xlsx",
+                    "../files\\ITPD\\prov_stat_gip\\o_rav_sr_snach\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "o_vide_rasr": {
+                "image": "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\o_vide_rasr.jpg",
+                    "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\o_vide_rasr.xlsx",
+                    "../files\\ITPD\\prov_stat_gip\\o_vide_rasr\\preview.jpg"
+                ],
+                "price": 500
+            }
+        },
+        "regress_analiz": {
+            "lin_regress": {
+                "image": "../files\\ITPD\\regress_analiz\\lin_regress\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\regress_analiz\\lin_regress\\lin_regress.jpg",
+                    "../files\\ITPD\\regress_analiz\\lin_regress\\lin_regress.xlsx",
+                    "../files\\ITPD\\regress_analiz\\lin_regress\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "mnozh_regress": {
+                "image": "../files\\ITPD\\regress_analiz\\mnozh_regress\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\regress_analiz\\mnozh_regress\\mnozh_regress.jpg",
+                    "../files\\ITPD\\regress_analiz\\mnozh_regress\\mnozh_regress.xlsx",
+                    "../files\\ITPD\\regress_analiz\\mnozh_regress\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "nelin_regress": {
+                "image": "../files\\ITPD\\regress_analiz\\nelin_regress\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\regress_analiz\\nelin_regress\\nelin_regress.jpg",
+                    "../files\\ITPD\\regress_analiz\\nelin_regress\\nelin_regress.xlsx",
+                    "../files\\ITPD\\regress_analiz\\nelin_regress\\preview.jpg"
+                ],
+                "price": 500
+            }
+        },
+        "veroyat_raspr": {
+            "binom_raspr": {
+                "image": "../files\\ITPD\\veroyat_raspr\\binom_raspr\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\veroyat_raspr\\binom_raspr\\binom_raspr.jpg",
+                    "../files\\ITPD\\veroyat_raspr\\binom_raspr\\binom_raspr.xlsx",
+                    "../files\\ITPD\\veroyat_raspr\\binom_raspr\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "exp_raspr": {
+                "image": "../files\\ITPD\\veroyat_raspr\\exp_raspr\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\veroyat_raspr\\exp_raspr\\exp_raspr.jpg",
+                    "../files\\ITPD\\veroyat_raspr\\exp_raspr\\exp_raspr.xlsx",
+                    "../files\\ITPD\\veroyat_raspr\\exp_raspr\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "norm_raspr": {
+                "image": "../files\\ITPD\\veroyat_raspr\\norm_raspr\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\veroyat_raspr\\norm_raspr\\norm_raspr.jpg",
+                    "../files\\ITPD\\veroyat_raspr\\norm_raspr\\norm_raspr.xlsx",
+                    "../files\\ITPD\\veroyat_raspr\\norm_raspr\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "puasson_raspr": {
+                "image": "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\preview.jpg",
+                "files": [
+                    "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\preview.jpg",
+                    "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\puasson_raspr.jpg",
+                    "../files\\ITPD\\veroyat_raspr\\puasson_raspr\\puasson_raspr.xlsx"
+                ],
+                "price": 500
+            }
+        }
+    },
+    "na4ert": {
+        "ВИДЫ": {
+            "1v": {
+                "image": "../files\\na4ert\\ВИДЫ\\1v\\preview.jpg",
+                "files": [
+                    "../files\\na4ert\\ВИДЫ\\1v\\1option.cdw",
+                    "../files\\na4ert\\ВИДЫ\\1v\\1option.dwg",
+                    "../files\\na4ert\\ВИДЫ\\1v\\1option.jpg",
+                    "../files\\na4ert\\ВИДЫ\\1v\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "2v": {
+                "image": "../files\\na4ert\\ВИДЫ\\2v\\preview.jpg",
+                "files": [
+                    "../files\\na4ert\\ВИДЫ\\2v\\2option.cdw",
+                    "../files\\na4ert\\ВИДЫ\\2v\\2option.dwg",
+                    "../files\\na4ert\\ВИДЫ\\2v\\2option.jpg",
+                    "../files\\na4ert\\ВИДЫ\\2v\\preview.jpg"
+                ],
+                "price": 500
+            }
+        }
+    }
+}

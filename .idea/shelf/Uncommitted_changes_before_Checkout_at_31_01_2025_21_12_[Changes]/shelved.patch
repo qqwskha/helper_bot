@@ -1,0 +1,289 @@
+Index: src/config.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>API_TOKEN = '7905777515:AAEteXO0eCzYSjwFhDRymP1ZfZ2stn59Lw8'\r\nPAYMENT_PROVIDER_TOKEN = '381764678:TEST:110185'\r\n\r\n# Структура данных для дисциплин, вариантов и номеров практических работ\r\nPRACTICAL_WORKS = {\r\n    \"Начертательная геометрия\": {\r\n        \"Практическая работа ВИДЫ\": {\r\n            \"Вариант 1\": {\r\n                \"image\": \"../files/na4ert/option1.jpg\",\r\n                \"files\": [\r\n                    \"../files/na4ert/1option.jpg\",\r\n                    \"../files/na4ert/1option.cdw\",\r\n                    \"../files/na4ert/1option.dwg\",\r\n                ],\r\n            },\r\n            \"Вариант 2\": {\r\n                \"image\": \"files/practical_views_variant2_example.jpg\",\r\n                \"files\": [\r\n                    \"files/practical_views_variant2_file1.pdf\",\r\n                    \"files/practical_views_variant2_file2.pdf\",\r\n                    \"files/practical_views_variant2_file3.pdf\",\r\n                ],\r\n            },\r\n        },\r\n        \"Практическая работа РАЗРЕЗЫ\": {\r\n            \"Вариант 1\": {\r\n                \"image\": \"files/practical_sections_variant1_example.jpg\",\r\n                \"files\": [\r\n                    \"files/practical_sections_variant1_file1.pdf\",\r\n                    \"files/practical_sections_variant1_file2.pdf\",\r\n                    \"files/practical_sections_variant1_file3.pdf\",\r\n                ],\r\n            },\r\n            \"Вариант 2\": {\r\n                \"image\": \"files/practical_sections_variant2_example.jpg\",\r\n                \"files\": [\r\n                    \"files/practical_sections_variant2_file1.pdf\",\r\n                    \"files/practical_sections_variant2_file2.pdf\",\r\n                    \"files/practical_sections_variant2_file3.pdf\",\r\n                ],\r\n            },\r\n        },\r\n    },\r\n    \"Компьютерное моделирование\": {\r\n        \"Практическая работа МОДЕЛИРОВАНИЕ\": {\r\n            \"Вариант 1\": {\r\n                \"image\": \"files/modeling_variant1_example.jpg\",\r\n                \"files\": [\r\n                    \"files/modeling_variant1_file1.pdf\",\r\n                    \"files/modeling_variant1_file2.pdf\",\r\n                    \"files/modeling_variant1_file3.pdf\",\r\n                ],\r\n            },\r\n            \"Вариант 2\": {\r\n                \"image\": \"files/modeling_variant2_example.jpg\",\r\n                \"files\": [\r\n                    \"files/modeling_variant2_file1.pdf\",\r\n                    \"files/modeling_variant2_file2.pdf\",\r\n                    \"files/modeling_variant2_file3.pdf\",\r\n                ],\r\n            },\r\n        },\r\n    },\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/config.py b/src/config.py
+--- a/src/config.py	(revision c2f771b2cc93f92f54f2f9281eec70bcb3ef2e71)
++++ b/src/config.py	(date 1738339632445)
+@@ -4,60 +4,75 @@
+ # Структура данных для дисциплин, вариантов и номеров практических работ
+ PRACTICAL_WORKS = {
+     "Начертательная геометрия": {
+-        "Практическая работа ВИДЫ": {
+-            "Вариант 1": {
+-                "image": "../files/na4ert/option1.jpg",
+-                "files": [
+-                    "../files/na4ert/1option.jpg",
+-                    "../files/na4ert/1option.cdw",
+-                    "../files/na4ert/1option.dwg",
+-                ],
+-            },
+-            "Вариант 2": {
+-                "image": "files/practical_views_variant2_example.jpg",
+-                "files": [
+-                    "files/practical_views_variant2_file1.pdf",
+-                    "files/practical_views_variant2_file2.pdf",
+-                    "files/practical_views_variant2_file3.pdf",
+-                ],
++        "views": {
++            "name": "Практическая работа ВИДЫ",
++            "variants": {
++                "v1": {
++                    "name": "Вариант 1",
++                    "image": "../files/na4ert/option1.jpg",
++                    "files": [
++                        "../files/na4ert/1option.jpg",
++                        "../files/na4ert/1option.cdw",
++                        "../files/na4ert/1option.dwg",
++                    ],
++                },
++                "v2": {
++                    "name": "Вариант 2",
++                    "image": "files/practical_views_variant2_example.jpg",
++                    "files": [
++                        "files/practical_views_variant2_file1.pdf",
++                        "files/practical_views_variant2_file2.pdf",
++                        "files/practical_views_variant2_file3.pdf",
++                    ],
++                },
+             },
+         },
+-        "Практическая работа РАЗРЕЗЫ": {
+-            "Вариант 1": {
+-                "image": "files/practical_sections_variant1_example.jpg",
+-                "files": [
+-                    "files/practical_sections_variant1_file1.pdf",
+-                    "files/practical_sections_variant1_file2.pdf",
+-                    "files/practical_sections_variant1_file3.pdf",
+-                ],
+-            },
+-            "Вариант 2": {
+-                "image": "files/practical_sections_variant2_example.jpg",
+-                "files": [
+-                    "files/practical_sections_variant2_file1.pdf",
+-                    "files/practical_sections_variant2_file2.pdf",
+-                    "files/practical_sections_variant2_file3.pdf",
+-                ],
++        "sections": {
++            "name": "Практическая работа РАЗРЕЗЫ",
++            "variants": {
++                "v1": {
++                    "name": "Вариант 1",
++                    "image": "files/practical_sections_variant1_example.jpg",
++                    "files": [
++                        "files/practical_sections_variant1_file1.pdf",
++                        "files/practical_sections_variant1_file2.pdf",
++                        "files/practical_sections_variant1_file3.pdf",
++                    ],
++                },
++                "v2": {
++                    "name": "Вариант 2",
++                    "image": "files/practical_sections_variant2_example.jpg",
++                    "files": [
++                        "files/practical_sections_variant2_file1.pdf",
++                        "files/practical_sections_variant2_file2.pdf",
++                        "files/practical_sections_variant2_file3.pdf",
++                    ],
++                },
+             },
+         },
+     },
+     "Компьютерное моделирование": {
+-        "Практическая работа МОДЕЛИРОВАНИЕ": {
+-            "Вариант 1": {
+-                "image": "files/modeling_variant1_example.jpg",
+-                "files": [
+-                    "files/modeling_variant1_file1.pdf",
+-                    "files/modeling_variant1_file2.pdf",
+-                    "files/modeling_variant1_file3.pdf",
+-                ],
+-            },
+-            "Вариант 2": {
+-                "image": "files/modeling_variant2_example.jpg",
+-                "files": [
+-                    "files/modeling_variant2_file1.pdf",
+-                    "files/modeling_variant2_file2.pdf",
+-                    "files/modeling_variant2_file3.pdf",
+-                ],
++        "modeling": {
++            "name": "Практическая работа МОДЕЛИРОВАНИЕ",
++            "variants": {
++                "v1": {
++                    "name": "Вариант 1",
++                    "image": "files/modeling_variant1_example.jpg",
++                    "files": [
++                        "files/modeling_variant1_file1.pdf",
++                        "files/modeling_variant1_file2.pdf",
++                        "files/modeling_variant1_file3.pdf",
++                    ],
++                },
++                "v2": {
++                    "name": "Вариант 2",
++                    "image": "files/modeling_variant2_example.jpg",
++                    "files": [
++                        "files/modeling_variant2_file1.pdf",
++                        "files/modeling_variant2_file2.pdf",
++                        "files/modeling_variant2_file3.pdf",
++                    ],
++                },
+             },
+         },
+     },
+Index: src/user_state.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class UserState:\r\n    def __init__(self):\r\n        self.discipline = None       # Выбранная дисциплина\r\n        self.practical_type = None   # Тип практической работы\r\n        self.variant = None          # Выбранный вариант\r\n\r\n    def is_complete(self):\r\n        return all([self.discipline, self.practical_type, self.variant])\r\n\r\n    def reset(self):\r\n        self.discipline = None\r\n        self.practical_type = None\r\n        self.variant = None
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/user_state.py b/src/user_state.py
+--- a/src/user_state.py	(revision c2f771b2cc93f92f54f2f9281eec70bcb3ef2e71)
++++ b/src/user_state.py	(date 1738339919383)
+@@ -1,8 +1,8 @@
+ class UserState:
+     def __init__(self):
+-        self.discipline = None       # Выбранная дисциплина
+-        self.practical_type = None   # Тип практической работы
+-        self.variant = None          # Выбранный вариант
++        self.discipline = None
++        self.practical_type = None
++        self.variant = None
+ 
+     def is_complete(self):
+         return all([self.discipline, self.practical_type, self.variant])
+Index: src/bot.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import logging\r\n\r\nfrom aiogram import Bot, Dispatcher, types\r\nfrom aiogram.contrib.middlewares.logging import LoggingMiddleware\r\nfrom aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup\r\nfrom aiogram.utils import executor\r\n\r\nfrom .config import API_TOKEN, PAYMENT_PROVIDER_TOKEN, PRACTICAL_WORKS\r\nfrom .order_manager import OrderManager\r\nfrom .user_state import UserState\r\n\r\n# Логирование\r\nlogging.basicConfig(level=logging.INFO)\r\n\r\n\r\n# Основной класс бота\r\nclass TelegramBot:\r\n    def __init__(self, api_token, payment_token):\r\n        self.bot = Bot(token=api_token)\r\n        self.dp = Dispatcher(self.bot)\r\n        self.dp.middleware.setup(LoggingMiddleware())\r\n        self.user_states = {}  # Хранение состояний пользователей\r\n        self.order_manager = OrderManager(payment_token)\r\n\r\n    def start(self):\r\n        @self.dp.message_handler(commands=['start'])\r\n        async def start(message: types.Message):\r\n            user_id = message.from_user.id\r\n            self.user_states[user_id] = UserState()\r\n            await self.send_main_menu(user_id)\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"main_menu\")\r\n        async def main_menu(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            await self.send_main_menu(user_id)\r\n            await query.answer()\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"select_discipline\")\r\n        async def select_discipline(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            await self.send_disciplines_menu(user_id)\r\n            await query.answer()\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"discipline_\"))\r\n        async def select_discipline(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            discipline = query.data.split(\"_\", 1)[1]\r\n            self.user_states[user_id].discipline = discipline\r\n            await self.send_practical_types_menu(user_id, discipline)\r\n            await query.answer()\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"practical_\"))\r\n        async def select_practical_type(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            practical_type = query.data.split(\"_\", 1)[1]\r\n            self.user_states[user_id].practical_type = practical_type\r\n            await self.send_variants_menu(user_id, practical_type)\r\n            await query.answer()\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data.startswith(\"variant_\"))\r\n        async def select_variant(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            variant = query.data.split(\"_\")[1]\r\n            self.user_states[user_id].variant = variant\r\n            practical_type = self.user_states[user_id].practical_type\r\n            variant_data = PRACTICAL_WORKS[self.user_states[user_id].discipline][practical_type][variant]\r\n            if \"image\" not in variant_data:\r\n                await query.message.answer(\"Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.\")\r\n                return\r\n            image_path = variant_data[\"image\"]\r\n            try:\r\n                with open(image_path, \"rb\") as image:\r\n                    await query.message.answer_photo(\r\n                        image,\r\n                        caption=\"Вот пример для выбранного варианта. Подтвердите ваш выбор.\",\r\n                        reply_markup=self.get_confirmation_keyboard(practical_type, variant),\r\n                    )\r\n            except FileNotFoundError:\r\n                await query.message.answer(\"Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.\")\r\n            await query.answer()\r\n\r\n        @self.dp.callback_query_handler(lambda query: query.data == \"confirm_choice\")\r\n        async def confirm_choice(query: types.CallbackQuery):\r\n            user_id = query.from_user.id\r\n            await self.confirm_order(user_id)\r\n            await query.answer()\r\n\r\n        @self.dp.pre_checkout_query_handler(lambda query: True)\r\n        async def pre_checkout_query(pre_checkout_q: types.PreCheckoutQuery):\r\n            await self.bot.answer_pre_checkout_query(pre_checkout_q.id, ok=True)\r\n\r\n        @self.dp.message_handler(content_types=types.ContentType.SUCCESSFUL_PAYMENT)\r\n        async def successful_payment(message: types.Message):\r\n            user_id = message.from_user.id\r\n            user_state = self.user_states[user_id]\r\n            files = PRACTICAL_WORKS[user_state.discipline][user_state.practical_type][user_state.variant][\"files\"]\r\n            for file_path in files:\r\n                with open(file_path, \"rb\") as file:\r\n                    await message.answer_document(file)\r\n            await message.answer(\"Все файлы отправлены! Спасибо за покупку.\")\r\n\r\n        executor.start_polling(self.dp, skip_updates=True)\r\n\r\n    async def send_main_menu(self, user_id):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        keyboard.add(\r\n            InlineKeyboardButton(\"Выбрать дисциплину\", callback_data=\"select_discipline\"),\r\n            InlineKeyboardButton(\"Информация\", callback_data=\"info\"),\r\n            InlineKeyboardButton(\"Цены\", callback_data=\"prices\"),\r\n        )\r\n        await self.bot.send_message(user_id, \"Главное меню:\", reply_markup=keyboard)\r\n\r\n    async def send_disciplines_menu(self, user_id):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        for discipline in PRACTICAL_WORKS.keys():\r\n            keyboard.insert(InlineKeyboardButton(discipline, callback_data=f\"discipline_{discipline}\"))\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        await self.bot.send_message(user_id, \"Выберите дисциплину:\", reply_markup=keyboard)\r\n\r\n    async def send_practical_types_menu(self, user_id, discipline):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        practical_types = PRACTICAL_WORKS[discipline]\r\n        for practical_type in practical_types.keys():\r\n            keyboard.insert(InlineKeyboardButton(practical_type, callback_data=f\"practical_{practical_type}\"))\r\n        keyboard.add(InlineKeyboardButton(\"Назад\", callback_data=\"select_discipline\"))\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        await self.bot.send_message(user_id, f\"Выберите тип практической работы для {discipline}:\", reply_markup=keyboard)\r\n\r\n    async def send_variants_menu(self, user_id, practical_type):\r\n        keyboard = InlineKeyboardMarkup(row_width=2)\r\n        variants = PRACTICAL_WORKS[self.user_states[user_id].discipline][practical_type]\r\n        for variant in variants.keys():\r\n            keyboard.insert(InlineKeyboardButton(variant, callback_data=f\"variant_{variant}\"))\r\n        keyboard.add(InlineKeyboardButton(\"Назад\", callback_data=f\"back_to_variants_{practical_type}\"))\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        await self.bot.send_message(user_id, f\"Выберите вариант для {practical_type}:\", reply_markup=keyboard)\r\n\r\n    def get_confirmation_keyboard(self, practical_type, variant):\r\n        keyboard = InlineKeyboardMarkup()\r\n        keyboard.add(InlineKeyboardButton(\"Подтвердить\", callback_data=\"confirm_choice\"))\r\n        keyboard.add(InlineKeyboardButton(\"Назад\", callback_data=f\"back_to_variants_{practical_type}\"))\r\n        keyboard.add(InlineKeyboardButton(\"На главную\", callback_data=\"main_menu\"))\r\n        return keyboard\r\n\r\n    async def confirm_order(self, user_id):\r\n        user_state = self.user_states[user_id]\r\n        order_details = (\r\n            f\"Вы выбрали:\\n\"\r\n            f\"Дисциплина: {user_state.discipline}\\n\"\r\n            f\"Тип практической работы: {user_state.practical_type}\\n\"\r\n            f\"Вариант: {user_state.variant}\\n\"\r\n            f\"Стоимость: 500 рублей\\n\"\r\n            f\"Оплатить?\"\r\n        )\r\n        invoice_data = self.order_manager.create_invoice(user_id, order_details)\r\n        try:\r\n            await self.bot.send_invoice(**invoice_data)\r\n        except Exception as e:\r\n            logging.error(f\"Error sending invoice: {e}\")\r\n            await self.bot.send_message(user_id, \"Произошла ошибка при создании счета. Пожалуйста, попробуйте позже.\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/bot.py b/src/bot.py
+--- a/src/bot.py	(revision c2f771b2cc93f92f54f2f9281eec70bcb3ef2e71)
++++ b/src/bot.py	(date 1738339899009)
+@@ -51,29 +51,43 @@
+ 
+         @self.dp.callback_query_handler(lambda query: query.data.startswith("practical_"))
+         async def select_practical_type(query: types.CallbackQuery):
++            """
++            Обработчик выбора типа практической работы.
++            Сохраняет выбранный тип работы и отображает меню выбора варианта.
++            """
+             user_id = query.from_user.id
+-            practical_type = query.data.split("_", 1)[1]
+-            self.user_states[user_id].practical_type = practical_type
+-            await self.send_variants_menu(user_id, practical_type)
++            if user_id not in self.user_states:
++                await query.message.answer("Пожалуйста, начните с команды /start.")
++                await query.answer()
++                return
++
++            practical_key = query.data.split("_", 1)[1]  # Извлекаем ключ типа работы
++            self.user_states[user_id].practical_type = practical_key
++            await self.send_variants_menu(user_id, practical_key)
+             await query.answer()
+ 
+         @self.dp.callback_query_handler(lambda query: query.data.startswith("variant_"))
+         async def select_variant(query: types.CallbackQuery):
+             user_id = query.from_user.id
+-            variant = query.data.split("_")[1]
+-            self.user_states[user_id].variant = variant
+-            practical_type = self.user_states[user_id].practical_type
+-            variant_data = PRACTICAL_WORKS[self.user_states[user_id].discipline][practical_type][variant]
++            variant_key = query.data.split("_")[1]
++            self.user_states[user_id].variant = variant_key
++
++            # Получаем данные о выбранном варианте
++            discipline = self.user_states[user_id].discipline
++            practical_key = self.user_states[user_id].practical_type
++            variant_data = PRACTICAL_WORKS[discipline][practical_key]["variants"][variant_key]
++
+             if "image" not in variant_data:
+                 await query.message.answer("Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.")
+                 return
++
+             image_path = variant_data["image"]
+             try:
+                 with open(image_path, "rb") as image:
+                     await query.message.answer_photo(
+                         image,
+                         caption="Вот пример для выбранного варианта. Подтвердите ваш выбор.",
+-                        reply_markup=self.get_confirmation_keyboard(practical_type, variant),
++                        reply_markup=self.get_confirmation_keyboard(practical_key, variant_key),
+                     )
+             except FileNotFoundError:
+                 await query.message.answer("Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.")
+@@ -118,22 +132,38 @@
+         await self.bot.send_message(user_id, "Выберите дисциплину:", reply_markup=keyboard)
+ 
+     async def send_practical_types_menu(self, user_id, discipline):
+-        keyboard = InlineKeyboardMarkup(row_width=2)
++        """
++        Отправляет меню выбора типа практической работы для выбранной дисциплины.
++        :param user_id: ID пользователя.
++        :param discipline: Выбранная дисциплина.
++        """
++        keyboard = InlineKeyboardMarkup(row_width=2)  # Два столбца
+         practical_types = PRACTICAL_WORKS[discipline]
+-        for practical_type in practical_types.keys():
+-            keyboard.insert(InlineKeyboardButton(practical_type, callback_data=f"practical_{practical_type}"))
++        for key, data in practical_types.items():
++            keyboard.insert(InlineKeyboardButton(data["name"], callback_data=f"practical_{key}"))
+         keyboard.add(InlineKeyboardButton("Назад", callback_data="select_discipline"))
+         keyboard.add(InlineKeyboardButton("На главную", callback_data="main_menu"))
+-        await self.bot.send_message(user_id, f"Выберите тип практической работы для {discipline}:", reply_markup=keyboard)
++
++        await self.bot.send_message(user_id, f"Выберите тип практической работы для {discipline}:",
++                                    reply_markup=keyboard)
+ 
+-    async def send_variants_menu(self, user_id, practical_type):
+-        keyboard = InlineKeyboardMarkup(row_width=2)
+-        variants = PRACTICAL_WORKS[self.user_states[user_id].discipline][practical_type]
+-        for variant in variants.keys():
+-            keyboard.insert(InlineKeyboardButton(variant, callback_data=f"variant_{variant}"))
+-        keyboard.add(InlineKeyboardButton("Назад", callback_data=f"back_to_variants_{practical_type}"))
++    async def send_variants_menu(self, user_id, practical_key):
++        """
++        Отправляет меню выбора варианта для выбранного типа практической работы.
++        :param user_id: ID пользователя.
++        :param practical_key: Ключ выбранного типа практической работы.
++        """
++        discipline = self.user_states[user_id].discipline
++        practical_data = PRACTICAL_WORKS[discipline][practical_key]
++        variants = practical_data["variants"]
++
++        keyboard = InlineKeyboardMarkup(row_width=2)  # Два столбца
++        for key, data in variants.items():
++            keyboard.insert(InlineKeyboardButton(data["name"], callback_data=f"variant_{key}"))
++        keyboard.add(InlineKeyboardButton("Назад", callback_data=f"back_to_variants_{practical_key}"))
+         keyboard.add(InlineKeyboardButton("На главную", callback_data="main_menu"))
+-        await self.bot.send_message(user_id, f"Выберите вариант для {practical_type}:", reply_markup=keyboard)
++
++        await self.bot.send_message(user_id, f"Выберите вариант для {practical_data['name']}:")
+ 
+     def get_confirmation_keyboard(self, practical_type, variant):
+         keyboard = InlineKeyboardMarkup()
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"db7b6a3f-025e-44d2-894a-129f3978f6c0\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/bot.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/bot.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/config.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/config.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/order_manager.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/order_manager.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"ee8ac6b2007f51ac31a398c61ec48ea4a471a978\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2sLMEj7hzMKlDzh4BkbMwUEWDc6\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Python.bot.executor\": \"Run\",\r\n    \"Python.main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"main\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"pythonProject\" />\r\n      <option name=\"ENV_FILES\" value=\"\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/src\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/src/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.main\" />\r\n        <item itemvalue=\"Python.main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"db7b6a3f-025e-44d2-894a-129f3978f6c0\" name=\"Changes\" comment=\"\" />\r\n      <created>1738230291890</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1738230291890</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c2f771b2cc93f92f54f2f9281eec70bcb3ef2e71)
++++ b/.idea/workspace.xml	(date 1738339706655)
+@@ -5,10 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="db7b6a3f-025e-44d2-894a-129f3978f6c0" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/order_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/order_manager.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
