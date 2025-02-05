@@ -222,6 +222,47 @@
                 ],
                 "price": 500
             }
+        },
+        "treh_mod_det": {
+            "pr3": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr3\\preview.jpg",
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr3\\gaika.m3d",
+                    "../files\\komp_model\\treh_mod_det\\pr3\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "pr4": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr4\\preview.jpg",
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr4\\preview.jpg",
+                    "../files\\komp_model\\treh_mod_det\\pr4\\трехступенчатый валик.m3d"
+                ],
+                "price": 500
+            },
+            "pr5": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr5\\preview.jpg",
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr5\\preview.jpg",
+                    "../files\\komp_model\\treh_mod_det\\pr5\\желоб.m3d"
+                ],
+                "price": 500
+            },
+            "pr6": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr6\\preview.jpg",
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr6\\preview.jpg",
+                    "../files\\komp_model\\treh_mod_det\\pr6\\молоток.m3d"
+                ],
+                "price": 500
+            },
+            "pr7": {
+                "image": null,
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr7\\Деталь.m3d"
+                ],
+                "price": 500
+            }
         }
     }
 }

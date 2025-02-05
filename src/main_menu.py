@@ -1,3 +1,4 @@
+#src/main_menu.py
 import logging
 from aiogram import types
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
