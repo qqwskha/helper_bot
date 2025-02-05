@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db7b6a3f-025e-44d2-894a-129f3978f6c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/1v/1option.cdw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/1v/1option.dwg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/1v/1option.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/1v/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/2v/2option.cdw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/2v/2option.dwg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/2v/2option.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp.model/ВИДЫ/2v/preview.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/1v/1option.cdw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/1v/1option.dwg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/1v/1option.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/1v/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/2v/2option.cdw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/2v/2option.dwg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/2v/2option.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/na4ert/ВИДЫ/2v/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/works_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/works_config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +63,7 @@
     "Python.file_scaner.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "394d4c06"
+    "git-widget-placeholder": "feature/new__func"
   }
 }]]></component>
   <component name="RecentsManager">

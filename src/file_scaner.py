@@ -38,6 +38,7 @@ def generate_json(base_path):
                             }
     return practical_works
 
+
 def save_to_json(data, output_file):
     """
     Сохраняет данные в JSON-файл.
@@ -46,6 +47,84 @@ def save_to_json(data, output_file):
     """
     with open(output_file, "w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
+
+
+def update_works_config():
+    BASE_PATH = "../files"  # Путь к корневой папке с файлами
+    OUTPUT_FILE = "works_config.json"  # Путь к выходному JSON-файлу
+
+    # Проверяем, существует ли выходной файл
+    if os.path.exists(OUTPUT_FILE):
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as file:
+            existing_data = json.load(file)
+    else:
+        existing_data = {}
+
+    # Генерируем новые данные
+    new_data = generate_json(BASE_PATH)
+
+    # Проверяем существование директорий и файлов в existing_data
+    disciplines_to_remove = []
+    for discipline, practical_types in existing_data.items():
+        discipline_path = os.path.join(BASE_PATH, discipline)
+        if not os.path.exists(discipline_path):
+            disciplines_to_remove.append(discipline)
+            continue
+
+        practical_types_to_remove = []
+        for practical_type, variants in practical_types.items():
+            practical_type_path = os.path.join(discipline_path, practical_type)
+            if not os.path.exists(practical_type_path):
+                practical_types_to_remove.append(practical_type)
+                continue
+
+            variants_to_remove = []
+            for variant, data in variants.items():
+                variant_path = os.path.join(practical_type_path, variant)
+                if not os.path.exists(variant_path):
+                    variants_to_remove.append(variant)
+                    continue
+
+                # Проверяем существование файлов внутри варианта
+                files_exist = all(os.path.exists(file_path) for file_path in data.get("files", []))
+                image_exists = data.get("image") is None or os.path.exists(data["image"])
+                if not (files_exist and image_exists):
+                    variants_to_remove.append(variant)
+
+            # Удаляем варианты, которые больше не существуют
+            for variant in variants_to_remove:
+                del existing_data[discipline][practical_type][variant]
+
+            # Удаляем практический тип, если он стал пустым
+            if not existing_data[discipline][practical_type]:
+                practical_types_to_remove.append(practical_type)
+
+        # Удаляем практические типы, которые больше не существуют
+        for practical_type in practical_types_to_remove:
+            del existing_data[discipline][practical_type]
+
+        # Удаляем дисциплину, если она стала пустой
+        if not existing_data[discipline]:
+            disciplines_to_remove.append(discipline)
+
+    # Удаляем дисциплины, которые больше не существуют
+    for discipline in disciplines_to_remove:
+        del existing_data[discipline]
+
+    # Обновляем существующие данные новыми данными
+    for discipline, practical_types in new_data.items():
+        if discipline not in existing_data:
+            existing_data[discipline] = {}
+        for practical_type, variants in practical_types.items():
+            if practical_type not in existing_data[discipline]:
+                existing_data[discipline][practical_type] = {}
+            for variant, data in variants.items():
+                existing_data[discipline][practical_type][variant] = data
+
+    # Сохраняем обновленные данные в JSON-файл
+    save_to_json(existing_data, OUTPUT_FILE)
+    print(f"JSON-файл успешно обновлен: {OUTPUT_FILE}")
+
 
 if __name__ == "__main__":
     BASE_PATH = "../files"  # Путь к корневой папке с файлами

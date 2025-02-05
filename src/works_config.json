@@ -200,25 +200,25 @@
             }
         }
     },
-    "na4ert": {
+    "komp_model": {
         "ВИДЫ": {
             "1v": {
-                "image": "../files\\na4ert\\ВИДЫ\\1v\\preview.jpg",
+                "image": "../files\\komp_model\\ВИДЫ\\1v\\preview.jpg",
                 "files": [
-                    "../files\\na4ert\\ВИДЫ\\1v\\1option.cdw",
-                    "../files\\na4ert\\ВИДЫ\\1v\\1option.dwg",
-                    "../files\\na4ert\\ВИДЫ\\1v\\1option.jpg",
-                    "../files\\na4ert\\ВИДЫ\\1v\\preview.jpg"
+                    "../files\\komp_model\\ВИДЫ\\1v\\1option.cdw",
+                    "../files\\komp_model\\ВИДЫ\\1v\\1option.dwg",
+                    "../files\\komp_model\\ВИДЫ\\1v\\1option.jpg",
+                    "../files\\komp_model\\ВИДЫ\\1v\\preview.jpg"
                 ],
                 "price": 500
             },
             "2v": {
-                "image": "../files\\na4ert\\ВИДЫ\\2v\\preview.jpg",
+                "image": "../files\\komp_model\\ВИДЫ\\2v\\preview.jpg",
                 "files": [
-                    "../files\\na4ert\\ВИДЫ\\2v\\2option.cdw",
-                    "../files\\na4ert\\ВИДЫ\\2v\\2option.dwg",
-                    "../files\\na4ert\\ВИДЫ\\2v\\2option.jpg",
-                    "../files\\na4ert\\ВИДЫ\\2v\\preview.jpg"
+                    "../files\\komp_model\\ВИДЫ\\2v\\2option.cdw",
+                    "../files\\komp_model\\ВИДЫ\\2v\\2option.dwg",
+                    "../files\\komp_model\\ВИДЫ\\2v\\2option.jpg",
+                    "../files\\komp_model\\ВИДЫ\\2v\\preview.jpg"
                 ],
                 "price": 500
             }
