@@ -225,7 +225,7 @@ class MainMenu:
 
     async def send_practical_types_menu(self, user_id, discipline):
         print("Order of practical works:", list(PRACTICAL_WORKS[discipline].keys()))  # Добавьте эту строку
-        keyboard = InlineKeyboardMarkup(row_width=2)
+        keyboard = InlineKeyboardMarkup(row_width=1)
         practical_types = list(PRACTICAL_WORKS[discipline].keys())
         for practical_type in practical_types:
             full_title = TITLES_MAPPING.get(practical_type, practical_type)  # Получаем полное название
