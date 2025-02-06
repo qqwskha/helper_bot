@@ -75,24 +75,43 @@
                 "price": 500
             }
         },
-        "vidi": {
-            "1v": {
-                "image": "../files\\komp_model\\vidi\\1v\\preview.jpg",
+        "treh_mod_det": {
+            "pr3": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr3\\preview.jpg",
                 "files": [
-                    "../files\\komp_model\\vidi\\1v\\1option.cdw",
-                    "../files\\komp_model\\vidi\\1v\\1option.dwg",
-                    "../files\\komp_model\\vidi\\1v\\1option.jpg",
-                    "../files\\komp_model\\vidi\\1v\\preview.jpg"
+                    "../files\\komp_model\\treh_mod_det\\pr3\\gaika.m3d",
+                    "../files\\komp_model\\treh_mod_det\\pr3\\preview.jpg"
                 ],
                 "price": 500
             },
-            "2v": {
-                "image": "../files\\komp_model\\vidi\\2v\\preview.jpg",
+            "pr4": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr4\\preview.jpg",
                 "files": [
-                    "../files\\komp_model\\vidi\\2v\\2option.cdw",
-                    "../files\\komp_model\\vidi\\2v\\2option.dwg",
-                    "../files\\komp_model\\vidi\\2v\\2option.jpg",
-                    "../files\\komp_model\\vidi\\2v\\preview.jpg"
+                    "../files\\komp_model\\treh_mod_det\\pr4\\preview.jpg",
+                    "../files\\komp_model\\treh_mod_det\\pr4\\трехступенчатый валик.m3d"
+                ],
+                "price": 500
+            },
+            "pr5": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr5\\preview.jpg",
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr5\\preview.jpg",
+                    "../files\\komp_model\\treh_mod_det\\pr5\\желоб.m3d"
+                ],
+                "price": 500
+            },
+            "pr6": {
+                "image": "../files\\komp_model\\treh_mod_det\\pr6\\preview.jpg",
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr6\\preview.jpg",
+                    "../files\\komp_model\\treh_mod_det\\pr6\\молоток.m3d"
+                ],
+                "price": 500
+            },
+            "pr7": {
+                "image": null,
+                "files": [
+                    "../files\\komp_model\\treh_mod_det\\pr7\\Деталь.m3d"
                 ],
                 "price": 500
             }
@@ -337,6 +356,117 @@
                 "image": null,
                 "files": [
                     "../files\\ITPD_OMS\\treh_mod_det\\pr7\\Деталь.m3d"
+                ],
+                "price": 500
+            }
+        },
+        "pr_treh_det": {
+            "pr2": {
+                "image": "../files\\ITPD_OMS\\pr_treh_det\\pr2\\preview.jpg",
+                "files": [
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr2\\2-1 Деталь с отверстиями.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr2\\2-2 Пирамида.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr2\\2-3 Серьга.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr2\\2-4 Крестовина.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr2\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "pr3": {
+                "image": "../files\\ITPD_OMS\\pr_treh_det\\pr3\\preview.jpg",
+                "files": [
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr3\\3-1 Цилиндр вращение.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr3\\3-3 Четырехступенчатый вал с отверстием.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr3\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "pr4": {
+                "image": "../files\\ITPD_OMS\\pr_treh_det\\pr4\\preview.jpg",
+                "files": [
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr4\\4-1 Трубопровод.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr4\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "pr5": {
+                "image": "../files\\ITPD_OMS\\pr_treh_det\\pr5\\preview.jpg",
+                "files": [
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr5\\5-1 Ваза.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\pr5\\preview.jpg"
+                ],
+                "price": 500
+            },
+            "pr6": {
+                "image": null,
+                "files": [],
+                "price": 500
+            },
+            "sr1": {
+                "image": "../files\\ITPD_OMS\\pr_treh_det\\sr1\\preview.jpg",
+                "files": [
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr1\\preview.jpg",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr1\\СР1 Кронштейн.m3d"
+                ],
+                "price": 500
+            },
+            "sr2": {
+                "image": "../files\\ITPD_OMS\\pr_treh_det\\sr2\\preview.jpg",
+                "files": [
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr2\\preview.jpg",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr2\\Сборка Опора конусная.a3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr2\\СР2 Центр.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr2\\СР3 Корпус.m3d"
+                ],
+                "price": 500
+            },
+            "sr3": {
+                "image": "../files\\ITPD_OMS\\pr_treh_det\\sr3\\preview.jpg",
+                "files": [
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\preview.jpg",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\СР1 Кронштейн.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\СР2 Центр.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\СР3 Корпус.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\СР4 Втулка Верхняя.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\СР5 Втулка нижняя.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\СР6 Щека.m3d",
+                    "../files\\ITPD_OMS\\pr_treh_det\\sr3\\СР8 Сборка Подвеска.a3d"
+                ],
+                "price": 500
+            }
+        }
+    },
+    "komp_grafika": {
+        "pr_rab": {
+            "pr1": {
+                "image": "../files\\komp_grafika\\pr_rab\\pr1\\preview.jpg",
+                "files": [
+                    "../files\\komp_grafika\\pr_rab\\pr1\\preview.jpg",
+                    "../files\\komp_grafika\\pr_rab\\pr1\\Построение видов.cdw"
+                ],
+                "price": 500
+            },
+            "pr2": {
+                "image": "../files\\komp_grafika\\pr_rab\\pr2\\preview.jpg",
+                "files": [
+                    "../files\\komp_grafika\\pr_rab\\pr2\\preview.jpg",
+                    "../files\\komp_grafika\\pr_rab\\pr2\\Очертания технических форм.cdw"
+                ],
+                "price": 500
+            },
+            "pr3": {
+                "image": "../files\\komp_grafika\\pr_rab\\pr3\\preview.jpg",
+                "files": [
+                    "../files\\komp_grafika\\pr_rab\\pr3\\preview.jpg",
+                    "../files\\komp_grafika\\pr_rab\\pr3\\Построение и обозначение разрезов.cdw"
+                ],
+                "price": 500
+            },
+            "pr4": {
+                "image": "../files\\komp_grafika\\pr_rab\\pr4\\preview.jpg",
+                "files": [
+                    "../files\\komp_grafika\\pr_rab\\pr4\\preview.jpg",
+                    "../files\\komp_grafika\\pr_rab\\pr4\\Чертеж.cdw"
                 ],
                 "price": 500
             }

@@ -49,6 +49,10 @@ TITLES_MAPPING = {
     "sr5": "Самостоятельная работа 5",
     "sr6": "Самостоятельная работа 6",
     "vidi": "Виды",
+    "komp_grafika": "Компьютерная графика",
+    "pr_rab": "Практические работы",
+    "informatika": "Информатика",
+
 }
 
 REVERSED_TITLES_MAPPING = {value: key for key, value in TITLES_MAPPING.items()}
