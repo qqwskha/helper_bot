@@ -2,7 +2,6 @@
 import json
 import os
 
-from src.config import PRACTICAL_WORKS
 
 def generate_json(base_path):
     practical_works = {}

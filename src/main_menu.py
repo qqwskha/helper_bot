@@ -224,16 +224,23 @@ class MainMenu:
         logging.info(f"Sent disciplines menu to user {user_id}")
 
     async def send_practical_types_menu(self, user_id, discipline):
-        keyboard = InlineKeyboardMarkup(row_width=1)
-        practical_types = list(PRACTICAL_WORKS[discipline].keys())
-        for practical_type in practical_types:
+        keyboard = InlineKeyboardMarkup(row_width=2)
+
+        # Сортируем типы практических работ по ключу
+        sorted_practical_types = sorted(PRACTICAL_WORKS[discipline].items(), key=lambda x: x[0])
+
+        for practical_type, variants in sorted_practical_types:
             full_title = TITLES_MAPPING.get(practical_type, practical_type)  # Получаем полное название
             keyboard.insert(InlineKeyboardButton(full_title, callback_data=f"pr_{practical_type}"))
+
         keyboard.add(InlineKeyboardButton("Назад", callback_data="main_menu"))
         keyboard.add(InlineKeyboardButton("На главную", callback_data="main_menu"))
-        message = await self.bot.send_message(user_id,
-                                              f"Выберите тип практической работы для {TITLES_MAPPING.get(discipline, discipline)}:",
-                                              reply_markup=keyboard)
+
+        message = await self.bot.send_message(
+            user_id,
+            f"Выберите тип практической работы для {TITLES_MAPPING.get(discipline, discipline)}:",
+            reply_markup=keyboard
+        )
         self.user_states[user_id].message_id = message.message_id
         logging.info(f"Sent practical types menu for {discipline} to user {user_id}")
 
