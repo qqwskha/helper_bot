@@ -2,6 +2,7 @@
 from dotenv import load_dotenv
 import os
 import json
+from collections import OrderedDict
 
 # Загрузка переменных окружения из файла .env
 load_dotenv()
@@ -17,4 +18,4 @@ current_dir = os.path.dirname(os.path.abspath(__file__))  # Путь к дире
 works_config_path = os.path.join(current_dir, "works_config.json")  # Полный путь к файлу
 
 with open(works_config_path, "r", encoding="utf-8") as file:
-    PRACTICAL_WORKS = json.load(file)
+    PRACTICAL_WORKS = json.load(file, object_pairs_hook=OrderedDict)
