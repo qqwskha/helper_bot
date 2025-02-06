@@ -145,7 +145,7 @@ class MainMenu:
             logging.info(f"Handled feedback callback for user {user_id}")
 
     async def send_main_menu(self, user_id, first_name):
-        keyboard = InlineKeyboardMarkup(row_width=2)
+        keyboard = InlineKeyboardMarkup(row_width=1)
         keyboard.add(InlineKeyboardButton("Информация", callback_data="info"))
         keyboard.add(InlineKeyboardButton("Цены", callback_data="prices"))
         keyboard.add(InlineKeyboardButton("Перейти к поиску работы", callback_data="search_work"))
@@ -169,13 +169,25 @@ class MainMenu:
     async def send_prices(self, user_id):
         keyboard = self.get_back_to_main_menu_keyboard()
         prices_info = "Цены на практические работы:\n\n"
+
         for discipline, practical_types in PRACTICAL_WORKS.items():
-            prices_info += f"**{discipline}**:\n"
+            # Получаем "красивое" название дисциплины
+            discipline_title = TITLES_MAPPING.get(discipline, discipline)
+            prices_info += f"**{discipline_title}**:\n"
+
             for practical_type, variants in practical_types.items():
-                prices_info += f"  • {practical_type}:\n"
+                # Получаем "красивое" название типа работы
+                practical_type_title = TITLES_MAPPING.get(practical_type, practical_type)
+                prices_info += f"  • {practical_type_title}:\n"
+
                 for variant, data in variants.items():
-                    prices_info += f"    - {variant}: {data['price']} рублей\n"
+                    # Получаем "красивое" название варианта
+                    variant_title = TITLES_MAPPING.get(variant, variant)
+                    price = data['price']
+                    prices_info += f"    - ✅ {variant_title}: {price} рублей\n"
+
             prices_info += "\n"
+
         await self.bot.send_message(
             user_id,
             prices_info,
@@ -201,7 +213,7 @@ class MainMenu:
         logging.info(f"Sent help message to user {user_id}")
 
     async def send_disciplines_menu(self, user_id):
-        keyboard = InlineKeyboardMarkup(row_width=2)
+        keyboard = InlineKeyboardMarkup(row_width=1)
         disciplines = list(PRACTICAL_WORKS.keys())
         for discipline in disciplines:
             full_title = TITLES_MAPPING.get(discipline, discipline)  # Получаем полное название
@@ -212,7 +224,7 @@ class MainMenu:
         logging.info(f"Sent disciplines menu to user {user_id}")
 
     async def send_practical_types_menu(self, user_id, discipline):
-        keyboard = InlineKeyboardMarkup(row_width=2)
+        keyboard = InlineKeyboardMarkup(row_width=1)
         practical_types = list(PRACTICAL_WORKS[discipline].keys())
         for practical_type in practical_types:
             full_title = TITLES_MAPPING.get(practical_type, practical_type)  # Получаем полное название
@@ -226,17 +238,37 @@ class MainMenu:
         logging.info(f"Sent practical types menu for {discipline} to user {user_id}")
 
     async def send_variants_menu(self, user_id, practical_type):
-        keyboard = InlineKeyboardMarkup(row_width=2)
         discipline = self.user_states[user_id].discipline
-        variants = list(PRACTICAL_WORKS[discipline][practical_type].keys())
+
+        # Проверяем, что discipline и practical_type существуют в PRACTICAL_WORKS
+        if discipline not in PRACTICAL_WORKS:
+            await self.bot.send_message(user_id,
+                                        "Произошла ошибка при обработке запроса. Пожалуйста, попробуйте снова.")
+            logging.error(f"Invalid discipline: {discipline}")
+            return
+
+        try:
+            variants = list(PRACTICAL_WORKS[discipline][practical_type].keys())
+        except KeyError as e:
+            logging.error(f"KeyError: {e}")
+            await self.bot.send_message(user_id,
+                                        "Произошла ошибка при обработке запроса. Пожалуйста, попробуйте снова.")
+            return
+
+        keyboard = InlineKeyboardMarkup(row_width=1)
+
         for variant in variants:
             full_title = TITLES_MAPPING.get(variant, variant)  # Получаем полное название
             keyboard.insert(InlineKeyboardButton(full_title, callback_data=f"var_{variant}"))
+
         keyboard.add(InlineKeyboardButton("Назад", callback_data=f"back_to_practicals_{practical_type}"))
         keyboard.add(InlineKeyboardButton("На главную", callback_data="main_menu"))
-        message = await self.bot.send_message(user_id,
-                                              f"Выберите вариант для {TITLES_MAPPING.get(practical_type, practical_type)}:",
-                                              reply_markup=keyboard)
+
+        message = await self.bot.send_message(
+            user_id,
+            f"Выберите вариант для {TITLES_MAPPING.get(practical_type, practical_type)}:",
+            reply_markup=keyboard
+        )
         self.user_states[user_id].message_id = message.message_id
         logging.info(f"Sent variants menu for {practical_type} to user {user_id}")
 
@@ -251,6 +283,7 @@ class MainMenu:
         logging.info(f"Sent feedback request to user {user_id}")
 
     def get_confirmation_keyboard(self, practical_type, variant):
+        logging.info(f"Generating confirmation keyboard for practical_type={practical_type}, variant={variant}")
         keyboard = InlineKeyboardMarkup()
         keyboard.add(InlineKeyboardButton("Подтвердить", callback_data="confirm_choice"))
         keyboard.add(InlineKeyboardButton("Назад", callback_data=f"back_to_variants_{practical_type}"))

@@ -1,22 +1,7 @@
 # src/titles_mapping.py
-from src.config import PRACTICAL_WORKS
 
-def generate_titles_mapping():
-    titles_mapping = {}
-    for discipline, practical_types in PRACTICAL_WORKS.items():
-        # Добавляем дисциплины
-        titles_mapping[discipline] = discipline.replace("_", " ").title()
-        for practical_type, variants in practical_types.items():
-            # Добавляем типы работ
-            titles_mapping[practical_type] = practical_type.replace("_", " ").title()
-            for variant in variants.keys():
-                # Добавляем варианты
-                titles_mapping[variant] = variant.replace("_", " ").title()
-    return titles_mapping
-
-TITLES_MAPPING = generate_titles_mapping()
-TITLES_MAPPING.update({
-    "ITPD": "Информационные технологии в профессиональной деятельности",
+TITLES_MAPPING = {
+    "ITPD_UK": "ИТПД (УКПт)",
     "na4ert": "Начертательная геометрия",
     "kontrol_kart_Suhart": "Контрольные карты Шухарта",
     "opis_stat": "Описательная статистика",
@@ -27,5 +12,43 @@ TITLES_MAPPING.update({
     "2v": "2 вариант",
     "kart_chisl_nesoot_ed": "Карты числа несоответствий единицам продукции",
     "kart_doli_nesoot": "Карты доли несоотвествий",
-})
+    "analiz_chustv": "Анализ чувствительности",
+    "kart_ind_nabl": "Карты индивидуальных наблюдений",
+    "kart_otnos": "Карты относительных наблюдений",
+    "kart_sr_i_st_otkl": "Карты средних и стандартных отклонений",
+    "sr_i_razm": "Карты средних и размахов",
+    "chisl_har_vib": "Числовые характеристики выборки",
+    "diag_Paret": "Диаграмма Парето",
+    "diag_rass_i_koef_korrel": "Диаграмма рассеяния и коэффициент корреляции",
+    "o_rav_disp": "Гипотезы о равенстве дисперсий",
+    "o_rav_sr": "Гипотезы о равенстве средних",
+    "o_rav_sr_snach": "Гипотезы о равенстве средних значений",
+    "o_vide_rasr": "Гипотезы о виде распределений",
+    "lin_regress": "Линейная регрессия",
+    "mnozh_regress": "Множественная регрессия",
+    "nelin_regress": "Нелинейная регрессия",
+    "binom_raspr": "Биномиальное распределение",
+    "exp_raspr": "Экспоненциальное распределение",
+    "norm_raspr": "Нормальное распределение",
+    "puasson_raspr": "Распределение Пуассона",
+    "komp_model": "Компьютерное моделирование",
+    "treh_mod_det": "Трехмерное моделирование деталей",
+    "pr1": "Практическая работа 1",
+    "pr2": "Практическая работа 2",
+    "pr3": "Практическая работа 3",
+    "pr4": "Практическая работа 4",
+    "pr5": "Практическая работа 5",
+    "pr6": "Практическая работа 6",
+    "pr7": "Практическая работа 7",
+    "ITPD_OMS": "ИТПД (ОМСфр/тр)",
+    "pr_treh_det": "Проектирование трехмерных деталей",
+    "sr1": "Самостоятельная работа 1",
+    "sr2": "Самостоятельная работа 2",
+    "sr3": "Самостоятельная работа 3",
+    "sr4": "Самостоятельная работа 4",
+    "sr5": "Самостоятельная работа 5",
+    "sr6": "Самостоятельная работа 6",
+    "vidi": "Виды",
+}
+
 REVERSED_TITLES_MAPPING = {value: key for key, value in TITLES_MAPPING.items()}

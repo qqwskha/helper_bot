@@ -5,8 +5,198 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db7b6a3f-025e-44d2-894a-129f3978f6c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr3/gaika.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr3/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr4/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr4/трехступенчатый валик.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr5/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr5/желоб.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr6/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr6/молоток.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_OMS/treh_mod_det/pr7/Деталь.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/analiz_chustv/analiz_chustv.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/analiz_chustv/analiz_chustv.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/analiz_chustv/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_chisl_nesoot_ed/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_doli_nesoot/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_ind_nabl/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_otnos/kart_otnos.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_otnos/kart_otnos.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_otnos/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/kart_sr_i_st_otkl/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/sr_i_razm/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/chisl_har_vib/chisl_har_vib.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/chisl_har_vib/chisl_har_vib.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/chisl_har_vib/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/diag_Paret/diag_Paret.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/diag_Paret/diag_Paret.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/diag_Paret/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/opis_stat/diag_rass_i_koef_korrel/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_disp/o_rav_disp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_disp/o_rav_disp.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_disp/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_sr/o_rav_sr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_sr/o_rav_sr.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_sr/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_rav_sr_snach/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_vide_rasr/o_vide_rasr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_vide_rasr/o_vide_rasr.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/prov_stat_gip/o_vide_rasr/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/lin_regress/lin_regress.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/lin_regress/lin_regress.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/lin_regress/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/mnozh_regress/mnozh_regress.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/mnozh_regress/mnozh_regress.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/mnozh_regress/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/nelin_regress/nelin_regress.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/nelin_regress/nelin_regress.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/regress_analiz/nelin_regress/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/binom_raspr/binom_raspr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/binom_raspr/binom_raspr.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/binom_raspr/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/exp_raspr/exp_raspr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/exp_raspr/exp_raspr.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/exp_raspr/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/norm_raspr/norm_raspr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/norm_raspr/norm_raspr.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/norm_raspr/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/puasson_raspr/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/puasson_raspr/puasson_raspr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/ITPD_UK/veroyat_raspr/puasson_raspr/puasson_raspr.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr2/2-1 Деталь с отверстиями.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr2/2-2 Пирамида.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr2/2-3 Серьга.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr2/2-4 Крестовина.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr2/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr3/3-1 Цилиндр вращение.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr3/3-3 Четырехступенчатый вал с отверстием.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr3/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr4/4-1 Трубопровод.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr4/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr5/5-1 Ваза.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/pr5/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr1/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr1/СР1 Кронштейн.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr2/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr2/СР2 Центр.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr2/СР3 Корпус.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr2/Сборка Опора конусная.a3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/СР1 Кронштейн.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/СР2 Центр.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/СР3 Корпус.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/СР4 Втулка Верхняя.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/СР5 Втулка нижняя.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/СР6 Щека.m3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/pr_treh_det/sr3/СР8 Сборка Подвеска.a3d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/1v/1option.cdw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/1v/1option.dwg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/1v/1option.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/1v/preview.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/2v/2option.cdw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/2v/2option.dwg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/2v/2option.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files/komp_model/vidi/2v/preview.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/analiz_chustv/analiz_chustv.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/analiz_chustv/analiz_chustv.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/analiz_chustv/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_chisl_nesoot_ed/kart_chisl_nesoot_ed.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_chisl_nesoot_ed/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_doli_nesoot/kart_doli_nesoot.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_doli_nesoot/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_ind_nabl/kart_ind_nabl.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_ind_nabl/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_otnos/kart_otnos.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_otnos/kart_otnos.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_otnos/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_sr_i_st_otkl/kart_sr_i_st_otkl.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/kart_sr_i_st_otkl/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/sr_i_razm/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/kontrol_kart_Suhart/sr_i_razm/sr_i_razm.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/chisl_har_vib/chisl_har_vib.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/chisl_har_vib/chisl_har_vib.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/chisl_har_vib/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_Paret/diag_Paret.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_Paret/diag_Paret.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_Paret/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_rass_i_koef_korrel/diag_rass_i_koef_korrel.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/opis_stat/diag_rass_i_koef_korrel/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_disp/o_rav_disp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_disp/o_rav_disp.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_disp/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr/o_rav_sr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr/o_rav_sr.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr_snach/o_rav_sr_snach.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_rav_sr_snach/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_vide_rasr/o_vide_rasr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_vide_rasr/o_vide_rasr.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/prov_stat_gip/o_vide_rasr/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/lin_regress/lin_regress.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/lin_regress/lin_regress.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/lin_regress/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/mnozh_regress/mnozh_regress.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/mnozh_regress/mnozh_regress.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/mnozh_regress/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/nelin_regress/nelin_regress.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/nelin_regress/nelin_regress.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/regress_analiz/nelin_regress/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/binom_raspr/binom_raspr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/binom_raspr/binom_raspr.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/binom_raspr/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/exp_raspr/exp_raspr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/exp_raspr/exp_raspr.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/exp_raspr/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/norm_raspr/norm_raspr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/norm_raspr/norm_raspr.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/norm_raspr/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/puasson_raspr/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/puasson_raspr/puasson_raspr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/ITPD/veroyat_raspr/puasson_raspr/puasson_raspr.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr3/gaika.m3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr3/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr4/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr4/трехступенчатый валик.m3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr5/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr5/желоб.m3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr6/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr6/молоток.m3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/treh_mod_det/pr7/Деталь.m3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/1v/1option.cdw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/1v/1option.dwg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/1v/1option.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/1v/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/2v/2option.cdw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/2v/2option.dwg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/2v/2option.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/komp_model/ВИДЫ/2v/preview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/file_scaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/file_scaner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/titles_mapping.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/titles_mapping.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/works_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/works_config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +248,8 @@
     &quot;Python.file_scaner.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Данил/Desktop/Termius-Crack-main/README.md&quot;
   }
 }</component>
   <component name="RecentsManager">

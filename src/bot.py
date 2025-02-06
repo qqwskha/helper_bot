@@ -368,8 +368,13 @@ class TelegramBot:
                 await query.answer()
                 logging.info(f"User {user_id} tried to use pr_ callback without starting the bot")
                 return
+
             practical_type = query.data.split("_", 1)[1]
             self.user_states[user_id].practical_type = practical_type
+
+            # Логируем состояние пользователя
+            logging.info(f"User {user_id} selected practical type: {practical_type}")
+
             await self.main_menu.delete_previous_message(user_id)
             await self.main_menu.send_variants_menu(user_id, practical_type)
             await query.answer()
@@ -383,13 +388,16 @@ class TelegramBot:
                 await query.answer()
                 logging.info(f"User {user_id} tried to use var_ callback without starting the bot")
                 return
+
             variant = query.data.split("_", 1)[1]
             self.user_states[user_id].variant = variant
+
             # Отправляем изображение-пример
             discipline = self.user_states[user_id].discipline
             practical_type = self.user_states[user_id].practical_type
             variant_data = PRACTICAL_WORKS[discipline][practical_type][variant]
             image_path = variant_data["image"]
+
             try:
                 with open(image_path, "rb") as image:
                     await self.main_menu.delete_previous_message(user_id)
@@ -402,7 +410,7 @@ class TelegramBot:
             except FileNotFoundError as e:
                 logging.error(f"File not found: {e}")
                 await query.message.answer("Извините, изображение не найдено. Пожалуйста, свяжитесь с администратором.")
-            await query.answer()
+                await query.answer()
             logging.info(f"Handled var_ callback for user {user_id}")
 
         @self.dp.callback_query_handler(lambda query: query.data == "confirm_choice")
@@ -440,7 +448,17 @@ class TelegramBot:
                 await query.answer()
                 logging.info(f"User {user_id} tried to use back_to_variants callback without starting the bot")
                 return
-            practical_type = query.data.split("_")[-1]  # Извлекаем тип практической работы
+
+            # Извлекаем полный тип практической работы
+            practical_type = "_".join(query.data.split("_")[3:])  # Все части после "back_to_variants_"
+            discipline = self.user_states[user_id].discipline
+
+            # Проверяем, что discipline и practical_type существуют в PRACTICAL_WORKS
+            if discipline not in PRACTICAL_WORKS or practical_type not in PRACTICAL_WORKS[discipline]:
+                await query.message.answer("Произошла ошибка при обработке запроса. Пожалуйста, попробуйте снова.")
+                logging.error(f"Invalid discipline or practical_type: {discipline}, {practical_type}")
+                return
+
             await self.main_menu.delete_previous_message(user_id)
             await self.main_menu.send_variants_menu(user_id, practical_type)
             await query.answer()
