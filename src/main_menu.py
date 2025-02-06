@@ -243,6 +243,7 @@ class MainMenu:
         )
         self.user_states[user_id].message_id = message.message_id
         logging.info(f"Sent practical types menu for {discipline} to user {user_id}")
+        logging.debug(f"Sorted practical types: {sorted_practical_types}")
 
     async def send_variants_menu(self, user_id, practical_type):
         discipline = self.user_states[user_id].discipline
