@@ -246,31 +246,26 @@ class MainMenu:
 
     async def send_variants_menu(self, user_id, practical_type):
         discipline = self.user_states[user_id].discipline
-
-        # Проверяем, что discipline и practical_type существуют в PRACTICAL_WORKS
         if discipline not in PRACTICAL_WORKS:
             await self.bot.send_message(user_id,
                                         "Произошла ошибка при обработке запроса. Пожалуйста, попробуйте снова.")
             logging.error(f"Invalid discipline: {discipline}")
             return
-
         try:
             variants = list(PRACTICAL_WORKS[discipline][practical_type].keys())
+            # Сортируем варианты
+            variants.sort()
         except KeyError as e:
             logging.error(f"KeyError: {e}")
             await self.bot.send_message(user_id,
                                         "Произошла ошибка при обработке запроса. Пожалуйста, попробуйте снова.")
             return
-
         keyboard = InlineKeyboardMarkup(row_width=1)
-
         for variant in variants:
             full_title = TITLES_MAPPING.get(variant, variant)  # Получаем полное название
             keyboard.insert(InlineKeyboardButton(full_title, callback_data=f"var_{variant}"))
-
         keyboard.add(InlineKeyboardButton("Назад", callback_data=f"back_to_practicals_{practical_type}"))
         keyboard.add(InlineKeyboardButton("На главную", callback_data="main_menu"))
-
         message = await self.bot.send_message(
             user_id,
             f"Выберите вариант для {TITLES_MAPPING.get(practical_type, practical_type)}:",

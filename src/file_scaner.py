@@ -1,19 +1,20 @@
 # src/file_scaner.py
 import json
 import os
+from collections import OrderedDict
 
 
 def generate_json(base_path):
-    practical_works = {}
-    for discipline in os.listdir(base_path):
+    practical_works = OrderedDict()
+    for discipline in sorted(os.listdir(base_path)):
         discipline_path = os.path.join(base_path, discipline)
         if os.path.isdir(discipline_path):
-            practical_works[discipline] = {}
-            for practical_type in os.listdir(discipline_path):
+            practical_works[discipline] = OrderedDict()
+            for practical_type in sorted(os.listdir(discipline_path)):
                 practical_type_path = os.path.join(discipline_path, practical_type)
                 if os.path.isdir(practical_type_path):
-                    practical_works[discipline][practical_type] = {}
-                    for variant in os.listdir(practical_type_path):
+                    practical_works[discipline][practical_type] = OrderedDict()
+                    for variant in sorted(os.listdir(practical_type_path)):
                         variant_path = os.path.join(practical_type_path, variant)
                         if os.path.isdir(variant_path):
                             files = [os.path.join(variant_path, f) for f in os.listdir(variant_path) if os.path.isfile(os.path.join(variant_path, f))]
@@ -30,12 +31,12 @@ def generate_json(base_path):
 
 def save_to_json(data, output_file):
     """
-    Сохраняет данные в JSON-файл.
+    Сохраняет данные в JSON-файл с сохранением порядка.
     :param data: Словарь с данными.
     :param output_file: Путь к выходному JSON-файлу.
     """
     with open(output_file, "w", encoding="utf-8") as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
+        json.dump(data, file, ensure_ascii=False, indent=4, sort_keys=False)
 
 
 def update_works_config():

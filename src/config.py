@@ -10,7 +10,6 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler("config_errors.log"),  # Логи записываются в файл
         logging.StreamHandler(),  # Логи выводятся в консоль
     ],
 )
@@ -72,6 +71,10 @@ def create_backup(file_path):
     except Exception as e:
         logging.error(f"Ошибка при создании резервной копии: {e}")
 
+import json
+from collections import OrderedDict
+
+# Загрузка данных из файла works_config.json с сохранением порядка
 try:
     # Проверяем, существует ли файл works_config.json
     if not os.path.exists(works_config_path):
@@ -80,10 +83,10 @@ try:
             json.dump(DEFAULT_PRACTICAL_WORKS, file, ensure_ascii=False, indent=4)
         PRACTICAL_WORKS = DEFAULT_PRACTICAL_WORKS
     else:
-        # Загружаем данные из файла
+        # Загружаем данные из файла с использованием OrderedDict
         with open(works_config_path, "r", encoding="utf-8") as file:
-            PRACTICAL_WORKS = json.load(file)
-            validate_data(PRACTICAL_WORKS)  # Валидация данных
+            PRACTICAL_WORKS = json.load(file, object_pairs_hook=OrderedDict)
+        validate_data(PRACTICAL_WORKS)  # Валидация данных
 except json.JSONDecodeError as e:
     logging.error(f"Ошибка декодирования JSON в файле {works_config_path}: {e}")
     raise ValueError(f"Ошибка декодирования JSON в файле {works_config_path}: {e}")
