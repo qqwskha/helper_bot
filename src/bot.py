@@ -6,9 +6,10 @@ from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils import executor
 from aiogram.utils.exceptions import BotBlocked
-from src.config import (FEEDBACK_CHANNEL_ID, PRACTICAL_WORKS, ADMIN_ID)
+from src.config import (FEEDBACK_CHANNEL_ID, PRACTICAL_WORKS, ADMIN_ID, works_config_path)
 from src.main_menu import MainMenu
 from src.order_manager import OrderManager
+from .file_scaner import save_to_json
 from .titles_mapping import TITLES_MAPPING, REVERSED_TITLES_MAPPING
 from src.user_state import UserState
 
@@ -28,6 +29,49 @@ class TelegramBot:
 
     def start(self):
         self.main_menu.register_handlers()
+
+        @self.dp.message_handler(commands=['set_price'])
+        async def set_price(message: types.Message):
+            user_id = message.from_user.id
+            if user_id != ADMIN_ID:
+                await message.answer("У вас нет прав для выполнения этой команды.")
+                return
+
+            try:
+                args = message.get_args().split()
+                params = dict(arg.split('=') for arg in args)
+                discipline = params.get("discipline")
+                practical_type = params.get("practical_type")
+                variant = params.get("variant")
+                price = int(params.get("price"))
+
+                if not discipline or not price:
+                    await message.answer(
+                        "Неверный формат команды. Используйте: /set_price discipline=<дисциплина> [practical_type=<тип>] [variant=<вариант>] price=<цена>")
+                    return
+
+                # Устанавливаем цену
+                if variant and practical_type:
+                    # Установка цены для варианта
+                    PRACTICAL_WORKS[discipline][practical_type][variant]["price"] = price
+                    await message.answer(f"Цена для варианта {variant} установлена: {price} рублей.")
+                elif practical_type:
+                    # Установка цены для типа работы
+                    for var_data in PRACTICAL_WORKS[discipline][practical_type].values():
+                        var_data["price"] = price
+                    await message.answer(f"Цена для типа работы {practical_type} установлена: {price} рублей.")
+                else:
+                    # Установка цены для дисциплины
+                    for prac_types in PRACTICAL_WORKS[discipline].values():
+                        for var_data in prac_types.values():
+                            var_data["price"] = price
+                    await message.answer(f"Цена для дисциплины {discipline} установлена: {price} рублей.")
+
+                # Сохраняем изменения в файл
+                save_to_json(PRACTICAL_WORKS, works_config_path)
+            except Exception as e:
+                logging.error(f"Ошибка при изменении цены: {e}")
+                await message.answer("Произошла ошибка при изменении цены. Проверьте формат команды.")
 
         @self.dp.message_handler(commands=['start'])
         async def start(message: types.Message):
@@ -397,14 +441,15 @@ class TelegramBot:
             practical_type = self.user_states[user_id].practical_type
             variant_data = PRACTICAL_WORKS[discipline][practical_type][variant]
             image_path = variant_data["image"]
+            price = variant_data["price"]  # Получаем цену варианта
 
             try:
                 with open(image_path, "rb") as image:
                     await self.main_menu.delete_previous_message(user_id)
                     message = await query.message.answer_photo(
                         image,
-                        caption="Вот пример для выбранного варианта. Подтвердите ваш выбор.",
-                        reply_markup=self.main_menu.get_confirmation_keyboard(practical_type, variant),
+                        caption=f"Вот пример для выбранного варианта.\nСтоимость: {price} рублей.\nПодтвердите ваш выбор.",
+                        reply_markup=self.main_menu.get_confirmation_keyboard(practical_type, variant, price),
                     )
                     self.user_states[user_id].message_id = message.message_id
             except FileNotFoundError as e:

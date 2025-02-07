@@ -105,19 +105,7 @@ class MainMenu:
             await query.answer()
             logging.info(f"Handled info callback for user {user_id}")
 
-        @self.dp.callback_query_handler(lambda query: query.data == "prices")
-        async def prices_callback(query: types.CallbackQuery):
-            user_id = query.from_user.id
-            if user_id not in self.user_states:
-                await query.message.answer("Пожалуйста, начните с команды /start.")
-                await query.answer()
-                logging.info(f"User {user_id} tried to use prices callback without starting the bot")
-                return
-            await self.delete_previous_message(user_id)
-            await self.send_prices(user_id)
-            await query.answer()
-            logging.info(f"Handled prices callback for user {user_id}")
-
+        
         @self.dp.callback_query_handler(lambda query: query.data == "search_work")
         async def search_work_callback(query: types.CallbackQuery):
             user_id = query.from_user.id
@@ -147,7 +135,6 @@ class MainMenu:
     async def send_main_menu(self, user_id, first_name):
         keyboard = InlineKeyboardMarkup(row_width=1)
         keyboard.add(InlineKeyboardButton("Информация", callback_data="info"))
-        keyboard.add(InlineKeyboardButton("Цены", callback_data="prices"))
         keyboard.add(InlineKeyboardButton("Перейти к поиску работы", callback_data="search_work"))
         keyboard.add(InlineKeyboardButton("Обратная связь", callback_data="feedback"))
         greeting_message = f"Добро пожаловать, {first_name}!"
@@ -166,35 +153,6 @@ class MainMenu:
         )
         logging.info(f"Sent info message to user {user_id}")
 
-    async def send_prices(self, user_id):
-        keyboard = self.get_back_to_main_menu_keyboard()
-        prices_info = "Цены на практические работы:\n\n"
-
-        for discipline, practical_types in PRACTICAL_WORKS.items():
-            # Получаем "красивое" название дисциплины
-            discipline_title = TITLES_MAPPING.get(discipline, discipline)
-            prices_info += f"**{discipline_title}**:\n"
-
-            for practical_type, variants in practical_types.items():
-                # Получаем "красивое" название типа работы
-                practical_type_title = TITLES_MAPPING.get(practical_type, practical_type)
-                prices_info += f"  • {practical_type_title}:\n"
-
-                for variant, data in variants.items():
-                    # Получаем "красивое" название варианта
-                    variant_title = TITLES_MAPPING.get(variant, variant)
-                    price = data['price']
-                    prices_info += f"    - ✅ {variant_title}: {price} рублей\n"
-
-            prices_info += "\n"
-
-        await self.bot.send_message(
-            user_id,
-            prices_info,
-            parse_mode="Markdown",
-            reply_markup=keyboard,
-        )
-        logging.info(f"Sent prices message to user {user_id}")
 
     async def send_help(self, user_id):
         keyboard = self.get_back_to_main_menu_keyboard()
@@ -284,8 +242,16 @@ class MainMenu:
         self.user_states[user_id].state = "awaiting_feedback"
         logging.info(f"Sent feedback request to user {user_id}")
 
-    def get_confirmation_keyboard(self, practical_type, variant):
-        logging.info(f"Generating confirmation keyboard for practical_type={practical_type}, variant={variant}")
+    def get_confirmation_keyboard(self, practical_type, variant, price):
+        """
+        Генерирует клавиатуру для подтверждения выбора.
+        :param practical_type: Тип практической работы.
+        :param variant: Вариант.
+        :param price: Цена варианта.
+        :return: InlineKeyboardMarkup.
+        """
+        logging.info(
+            f"Generating confirmation keyboard for practical_type={practical_type}, variant={variant}, price={price}")
         keyboard = InlineKeyboardMarkup()
         keyboard.add(InlineKeyboardButton("Подтвердить", callback_data="confirm_choice"))
         keyboard.add(InlineKeyboardButton("Назад", callback_data=f"back_to_variants_{practical_type}"))
